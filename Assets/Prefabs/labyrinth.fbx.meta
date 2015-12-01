@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: cfe31b5f7cc4b4497ab339b7c973feaa
-timeCreated: 1448812909
+guid: 09a1114321eab41b68b1be94bb5a89a0
+timeCreated: 1448967120
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -11,8 +11,6 @@ ModelImporter:
     3300000: //RootNode
     4300000: Plane
     6400000: //RootNode
-    7400000: Default Take
-    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -54,7 +52,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 1
   importAnimation: 1
   copyAvatar: 0
@@ -71,7 +69,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
