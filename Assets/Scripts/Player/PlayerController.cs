@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour {
 		this.movementSpeed = (this.movementSpeed <= 0.0f) ? 10.0f : this.movementSpeed;
 		this.verticalViewAngle = (this.verticalViewAngle <= 0.0f) ? 120.0f : this.verticalViewAngle;
 
-		Cursor.lockState = CursorLockMode.Locked;
-		Cursor.visible = false;
+		//Cursor.lockState = CursorLockMode.Locked;
+		//Cursor.visible = false;
 	}
 
 	// Update is called once per frame
