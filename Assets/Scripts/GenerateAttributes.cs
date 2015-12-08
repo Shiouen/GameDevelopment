@@ -2,39 +2,39 @@
 using System.Collections;
 
 public class GenerateAttributes : MonoBehaviour {
-	private GameObject labyrinth;
+    [SerializeField]
+    private GameObject keyPrefab;
+
+    private GameObject labyrinth;
 	private GameObject[] attributes;
 	private int numberOfAttributes = 10;
-	public GameObject keyPrefab;
 
 	// Use this for initialization
 	void Start () {
-		this.labyrinth = GameObject.FindGameObjectWithTag ("Labyrinth");
-		float xSize = this.labyrinth.GetComponent<Renderer> ().bounds.size.x;
-		float maxX = xSize - (xSize / 2);
-		float zSize = this.labyrinth.GetComponent<Renderer> ().bounds.size.z;
-		float maxZ = zSize - (zSize / 2);
+		this.labyrinth = GameObject.FindGameObjectWithTag("Labyrinth");
 
+        // get min/max x & z
+        float xSize = this.labyrinth.GetComponent<Renderer>().bounds.size.x;
+		float maxX = xSize - (xSize / 2);
+		float zSize = this.labyrinth.GetComponent<Renderer>().bounds.size.z;
+		float maxZ = zSize - (zSize / 2);
 		float minX = this.labyrinth.transform.position.x - maxX;
 		float minZ = this.labyrinth.transform.position.z - maxZ;
-	
-		float randomX;
-		float randomZ;
-		float y;
 
-		attributes = new GameObject[numberOfAttributes];
-		bool isColliding = false;
-		int index = 0;
+		this.attributes = new GameObject[numberOfAttributes];
+        float randomX;
+        float randomZ;
+        float y;
+        bool isColliding = false;
+        int index = 0;
 
-		while (index < numberOfAttributes) {
-			randomX = Random.Range (minX, maxX);
-			randomZ = Random.Range (minZ, maxZ);
+        while (index < numberOfAttributes) {
+			randomX = Random.Range(minX, maxX);
+			randomZ = Random.Range(minZ, maxZ);
 			y = -4;
 
 			Vector3 attributePos = new Vector3 (randomX, y, randomZ);
 
-			//GameObject attribute = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			//attribute.transform.position = attributePos;
 			// cubes nog vervangen door 3D modellen
 			this.keyPrefab.transform.position = new Vector3 (randomX, y, randomZ);
 			GameObject key = (GameObject)Instantiate (this.keyPrefab, this.keyPrefab.transform.position, Quaternion.identity);
@@ -69,7 +69,6 @@ public class GenerateAttributes : MonoBehaviour {
 	void Update () {
 		Vector3 randomRotation = new Vector3(0, 1, 0);
 		foreach(GameObject attribute in this.attributes) {
-			print(attribute);
 			attribute.transform.Rotate(randomRotation);
 		}
 	}
