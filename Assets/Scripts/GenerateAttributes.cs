@@ -2,65 +2,72 @@
 using System.Collections;
 
 public class GenerateAttributes : MonoBehaviour {
-    [SerializeField]
-    private GameObject keyPrefab;
-
-    private GameObject labyrinth;
 	private GameObject[] attributes;
-	private int numberOfAttributes = 10;
-
+	public GameObject clockPrefab;
+	public GameObject compassPrefab;
+	public GameObject flashlightPrefab;
+	public GameObject gunPrefab;
+	public GameObject keyPrefab;
+	private GameObject labyrinth;
+	private int numberOfAttributes = 5;
+	private GameObject[] prefabs;
+	
 	// Use this for initialization
 	void Start () {
-		this.labyrinth = GameObject.FindGameObjectWithTag("Labyrinth");
-
-        // get min/max x & z
-        float xSize = this.labyrinth.GetComponent<Renderer>().bounds.size.x;
+		this.labyrinth = GameObject.FindGameObjectWithTag ("Labyrinth");
+		float xSize = this.labyrinth.GetComponent<Renderer> ().bounds.size.x;
 		float maxX = xSize - (xSize / 2);
-		float zSize = this.labyrinth.GetComponent<Renderer>().bounds.size.z;
+		float zSize = this.labyrinth.GetComponent<Renderer> ().bounds.size.z;
 		float maxZ = zSize - (zSize / 2);
+
 		float minX = this.labyrinth.transform.position.x - maxX;
 		float minZ = this.labyrinth.transform.position.z - maxZ;
+	
+		float randomX;
+		float randomZ;
+		float y;
 
-		this.attributes = new GameObject[numberOfAttributes];
-        float randomX;
-        float randomZ;
-        float y;
-        bool isColliding = false;
-        int index = 0;
+		prefabs = new GameObject[numberOfAttributes];
+		prefabs[0] = keyPrefab;
+		prefabs[1] = gunPrefab;
+		prefabs[2] = flashlightPrefab;
+		prefabs[3] = compassPrefab;
+		prefabs[4] = clockPrefab;
 
-        while (index < numberOfAttributes) {
-			randomX = Random.Range(minX, maxX);
-			randomZ = Random.Range(minZ, maxZ);
+		attributes = new GameObject[numberOfAttributes];
+		bool isColliding = false;
+		int index = 0;
+
+		while (index < numberOfAttributes) {
+			isColliding = false;
+			randomX = Random.Range (minX, maxX);
+			randomZ = Random.Range (minZ, maxZ);
 			y = -4;
 
 			Vector3 attributePos = new Vector3 (randomX, y, randomZ);
 
-			// cubes nog vervangen door 3D modellen
-			this.keyPrefab.transform.position = new Vector3 (randomX, y, randomZ);
-			GameObject key = (GameObject)Instantiate (this.keyPrefab, this.keyPrefab.transform.position, Quaternion.identity);
+			this.prefabs[index].transform.position = new Vector3 (randomX, y, randomZ);
+			GameObject attribute = (GameObject)Instantiate (this.prefabs[index], this.prefabs[index].transform.position, Quaternion.identity);
 
 			// check if there is a floor somewhere under the attribute to know if it's placed in the labyrinth it self
-			if (Physics.Raycast (key.transform.position, -Vector3.up, 4)) {
-				Collider[] myarray = Physics.OverlapSphere (key.transform.position, 0.5f);
+			if (Physics.Raycast (attribute.transform.position, -Vector3.up, 4)) {
+				Collider[] myarray = Physics.OverlapSphere (attribute.transform.position, 0.5f);
 				
 				for (int j = 0; j < myarray.Length; j++) {
-					print ("iteratie" + j);
 					// check if the attribute is colliding with a wall of the labyrinth, if it's not it can be added to list of attributes
-					if (myarray [j].gameObject.CompareTag ("Labyrinth")) {
+					if (myarray[j].gameObject.CompareTag ("Labyrinth")) {
 						isColliding = true;
-						GameObject.Destroy (key);
-						print ("vernietigd");
+						GameObject.Destroy (attribute);
 						break;
 					}
 				}
 
 				if (!isColliding) {
-					print ("toegevoegd");
-					attributes [index] = key;
+					attributes [index] = attribute;
 					index++;
 				}
 			} else {
-				GameObject.Destroy (key);
+				GameObject.Destroy (attribute);
 			}
 		}
 	}

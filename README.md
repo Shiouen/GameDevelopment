@@ -1,2 +1,0 @@
-# GameDevelopment
-Course task.

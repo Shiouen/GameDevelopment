@@ -1,0 +1,992 @@
+fileFormatVersion: 2
+guid: 9727358a9b3354dee85d07146af11b94
+timeCreated: 1450033496
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arch_Gate
+    100002: Bar_1
+    100004: Bar_2
+    100006: Bar_3
+    100008: Bar_4
+    100010: Bar_5
+    100012: Barrel
+    100014: Bucket
+    100016: Candle_A
+    100018: Candle_B
+    100020: Candle_C
+    100022: Candle_D
+    100024: Candle_E
+    100026: Candles
+    100028: Cell_Seat
+    100030: Chain_A
+    100032: Chain_B
+    100034: Chain_C
+    100036: Chain_D
+    100038: Chain_E
+    100040: Chain_Link_1
+    100042: Chain_Link_1 1
+    100044: Chain_Link_1 2
+    100046: Chain_Link_1 3
+    100048: Chain_Link_1 4
+    100050: Chain_Link_10
+    100052: Chain_Link_10 1
+    100054: Chain_Link_10 2
+    100056: Chain_Link_10 3
+    100058: Chain_Link_10 4
+    100060: Chain_Link_11
+    100062: Chain_Link_11 1
+    100064: Chain_Link_11 2
+    100066: Chain_Link_11 3
+    100068: Chain_Link_11 4
+    100070: Chain_Link_12
+    100072: Chain_Link_12 1
+    100074: Chain_Link_12 2
+    100076: Chain_Link_12 3
+    100078: Chain_Link_12 4
+    100080: Chain_Link_13
+    100082: Chain_Link_13 1
+    100084: Chain_Link_13 2
+    100086: Chain_Link_14
+    100088: Chain_Link_14 1
+    100090: Chain_Link_14 2
+    100092: Chain_Link_15
+    100094: Chain_Link_15 1
+    100096: Chain_Link_15 2
+    100098: Chain_Link_16
+    100100: Chain_Link_16 1
+    100102: Chain_Link_16 2
+    100104: Chain_Link_17
+    100106: Chain_Link_17 1
+    100108: Chain_Link_17 2
+    100110: Chain_Link_18
+    100112: Chain_Link_18 1
+    100114: Chain_Link_18 2
+    100116: Chain_Link_19
+    100118: Chain_Link_19 1
+    100120: Chain_Link_19 2
+    100122: Chain_Link_2
+    100124: Chain_Link_2 1
+    100126: Chain_Link_2 2
+    100128: Chain_Link_2 3
+    100130: Chain_Link_2 4
+    100132: Chain_Link_20
+    100134: Chain_Link_20 1
+    100136: Chain_Link_20 2
+    100138: Chain_Link_21
+    100140: Chain_Link_21 1
+    100142: Chain_Link_21 2
+    100144: Chain_Link_22
+    100146: Chain_Link_22 1
+    100148: Chain_Link_22 2
+    100150: Chain_Link_23
+    100152: Chain_Link_23 1
+    100154: Chain_Link_23 2
+    100156: Chain_Link_24
+    100158: Chain_Link_24 1
+    100160: Chain_Link_24 2
+    100162: Chain_Link_25
+    100164: Chain_Link_25 1
+    100166: Chain_Link_25 2
+    100168: Chain_Link_26
+    100170: Chain_Link_26 1
+    100172: Chain_Link_26 2
+    100174: Chain_Link_27
+    100176: Chain_Link_27 1
+    100178: Chain_Link_27 2
+    100180: Chain_Link_28
+    100182: Chain_Link_28 1
+    100184: Chain_Link_28 2
+    100186: Chain_Link_29
+    100188: Chain_Link_29 1
+    100190: Chain_Link_29 2
+    100192: Chain_Link_3
+    100194: Chain_Link_3 1
+    100196: Chain_Link_3 2
+    100198: Chain_Link_3 3
+    100200: Chain_Link_3 4
+    100202: Chain_Link_30
+    100204: Chain_Link_30 1
+    100206: Chain_Link_30 2
+    100208: Chain_Link_31
+    100210: Chain_Link_31 1
+    100212: Chain_Link_31 2
+    100214: Chain_Link_32
+    100216: Chain_Link_4
+    100218: Chain_Link_4 1
+    100220: Chain_Link_4 2
+    100222: Chain_Link_4 3
+    100224: Chain_Link_4 4
+    100226: Chain_Link_5
+    100228: Chain_Link_5 1
+    100230: Chain_Link_5 2
+    100232: Chain_Link_5 3
+    100234: Chain_Link_5 4
+    100236: Chain_Link_6
+    100238: Chain_Link_6 1
+    100240: Chain_Link_6 2
+    100242: Chain_Link_6 3
+    100244: Chain_Link_6 4
+    100246: Chain_Link_7
+    100248: Chain_Link_7 1
+    100250: Chain_Link_7 2
+    100252: Chain_Link_7 3
+    100254: Chain_Link_7 4
+    100256: Chain_Link_8
+    100258: Chain_Link_8 1
+    100260: Chain_Link_8 2
+    100262: Chain_Link_8 3
+    100264: Chain_Link_8 4
+    100266: Chain_Link_9
+    100268: Chain_Link_9 1
+    100270: Chain_Link_9 2
+    100272: Chain_Link_9 3
+    100274: Chain_Link_9 4
+    100276: Crate_A
+    100278: Crate_B
+    100280: Crate_C
+    100282: Crates
+    100284: Debris_1
+    100286: Debris_1 1
+    100288: Debris_2
+    100290: Debris_2 1
+    100292: Dungeon_Key_Set
+    100294: Floor_Cage
+    100296: Floor_Gate
+    100298: Hanging_Cage
+    100300: Hook
+    100302: Hook 1
+    100304: Key_A
+    100306: Key_B
+    100308: Key_C
+    100310: Keychain
+    100312: Ladder
+    100314: Left_Side
+    100316: Leg_1
+    100318: Leg_1 1
+    100320: Leg_1 2
+    100322: Leg_2
+    100324: Leg_2 1
+    100326: Leg_2 2
+    100328: Leg_3
+    100330: Leg_3 1
+    100332: Leg_3 2
+    100334: Leg_4
+    100336: Leg_4 1
+    100338: Leg_4 2
+    100340: Peg_1
+    100342: Peg_2
+    100344: Plate
+    100346: Plate 1
+    100348: //RootNode
+    100350: Right_Side
+    100352: Slavery_Chains
+    100354: Stone_1
+    100356: Stone_2
+    100358: Stool_A
+    100360: Stool_A_Broken
+    100362: Stool_A_Broken 1
+    100364: Stools
+    100366: Table_A
+    100368: Table_B
+    100370: Table_C
+    100372: Table_Top
+    100374: Table_Top 1
+    100376: Table_Top 2
+    100378: Tables
+    100380: Torch
+    100382: Tunnel_Grate
+    100384: Tunnel_Grate_Broken
+    100386: Tunnel_Grate_Broken 1
+    100388: Tunnel_Grates
+    100390: Wood_Seat
+    400000: Arch_Gate
+    400002: Bar_1
+    400004: Bar_2
+    400006: Bar_3
+    400008: Bar_4
+    400010: Bar_5
+    400012: Barrel
+    400014: Bucket
+    400016: Candle_A
+    400018: Candle_B
+    400020: Candle_C
+    400022: Candle_D
+    400024: Candle_E
+    400026: Candles
+    400028: Cell_Seat
+    400030: Chain_A
+    400032: Chain_B
+    400034: Chain_C
+    400036: Chain_D
+    400038: Chain_E
+    400040: Chain_Link_1
+    400042: Chain_Link_1 1
+    400044: Chain_Link_1 2
+    400046: Chain_Link_1 3
+    400048: Chain_Link_1 4
+    400050: Chain_Link_10
+    400052: Chain_Link_10 1
+    400054: Chain_Link_10 2
+    400056: Chain_Link_10 3
+    400058: Chain_Link_10 4
+    400060: Chain_Link_11
+    400062: Chain_Link_11 1
+    400064: Chain_Link_11 2
+    400066: Chain_Link_11 3
+    400068: Chain_Link_11 4
+    400070: Chain_Link_12
+    400072: Chain_Link_12 1
+    400074: Chain_Link_12 2
+    400076: Chain_Link_12 3
+    400078: Chain_Link_12 4
+    400080: Chain_Link_13
+    400082: Chain_Link_13 1
+    400084: Chain_Link_13 2
+    400086: Chain_Link_14
+    400088: Chain_Link_14 1
+    400090: Chain_Link_14 2
+    400092: Chain_Link_15
+    400094: Chain_Link_15 1
+    400096: Chain_Link_15 2
+    400098: Chain_Link_16
+    400100: Chain_Link_16 1
+    400102: Chain_Link_16 2
+    400104: Chain_Link_17
+    400106: Chain_Link_17 1
+    400108: Chain_Link_17 2
+    400110: Chain_Link_18
+    400112: Chain_Link_18 1
+    400114: Chain_Link_18 2
+    400116: Chain_Link_19
+    400118: Chain_Link_19 1
+    400120: Chain_Link_19 2
+    400122: Chain_Link_2
+    400124: Chain_Link_2 1
+    400126: Chain_Link_2 2
+    400128: Chain_Link_2 3
+    400130: Chain_Link_2 4
+    400132: Chain_Link_20
+    400134: Chain_Link_20 1
+    400136: Chain_Link_20 2
+    400138: Chain_Link_21
+    400140: Chain_Link_21 1
+    400142: Chain_Link_21 2
+    400144: Chain_Link_22
+    400146: Chain_Link_22 1
+    400148: Chain_Link_22 2
+    400150: Chain_Link_23
+    400152: Chain_Link_23 1
+    400154: Chain_Link_23 2
+    400156: Chain_Link_24
+    400158: Chain_Link_24 1
+    400160: Chain_Link_24 2
+    400162: Chain_Link_25
+    400164: Chain_Link_25 1
+    400166: Chain_Link_25 2
+    400168: Chain_Link_26
+    400170: Chain_Link_26 1
+    400172: Chain_Link_26 2
+    400174: Chain_Link_27
+    400176: Chain_Link_27 1
+    400178: Chain_Link_27 2
+    400180: Chain_Link_28
+    400182: Chain_Link_28 1
+    400184: Chain_Link_28 2
+    400186: Chain_Link_29
+    400188: Chain_Link_29 1
+    400190: Chain_Link_29 2
+    400192: Chain_Link_3
+    400194: Chain_Link_3 1
+    400196: Chain_Link_3 2
+    400198: Chain_Link_3 3
+    400200: Chain_Link_3 4
+    400202: Chain_Link_30
+    400204: Chain_Link_30 1
+    400206: Chain_Link_30 2
+    400208: Chain_Link_31
+    400210: Chain_Link_31 1
+    400212: Chain_Link_31 2
+    400214: Chain_Link_32
+    400216: Chain_Link_4
+    400218: Chain_Link_4 1
+    400220: Chain_Link_4 2
+    400222: Chain_Link_4 3
+    400224: Chain_Link_4 4
+    400226: Chain_Link_5
+    400228: Chain_Link_5 1
+    400230: Chain_Link_5 2
+    400232: Chain_Link_5 3
+    400234: Chain_Link_5 4
+    400236: Chain_Link_6
+    400238: Chain_Link_6 1
+    400240: Chain_Link_6 2
+    400242: Chain_Link_6 3
+    400244: Chain_Link_6 4
+    400246: Chain_Link_7
+    400248: Chain_Link_7 1
+    400250: Chain_Link_7 2
+    400252: Chain_Link_7 3
+    400254: Chain_Link_7 4
+    400256: Chain_Link_8
+    400258: Chain_Link_8 1
+    400260: Chain_Link_8 2
+    400262: Chain_Link_8 3
+    400264: Chain_Link_8 4
+    400266: Chain_Link_9
+    400268: Chain_Link_9 1
+    400270: Chain_Link_9 2
+    400272: Chain_Link_9 3
+    400274: Chain_Link_9 4
+    400276: Crate_A
+    400278: Crate_B
+    400280: Crate_C
+    400282: Crates
+    400284: Debris_1
+    400286: Debris_1 1
+    400288: Debris_2
+    400290: Debris_2 1
+    400292: Dungeon_Key_Set
+    400294: Floor_Cage
+    400296: Floor_Gate
+    400298: Hanging_Cage
+    400300: Hook
+    400302: Hook 1
+    400304: Key_A
+    400306: Key_B
+    400308: Key_C
+    400310: Keychain
+    400312: Ladder
+    400314: Left_Side
+    400316: Leg_1
+    400318: Leg_1 1
+    400320: Leg_1 2
+    400322: Leg_2
+    400324: Leg_2 1
+    400326: Leg_2 2
+    400328: Leg_3
+    400330: Leg_3 1
+    400332: Leg_3 2
+    400334: Leg_4
+    400336: Leg_4 1
+    400338: Leg_4 2
+    400340: Peg_1
+    400342: Peg_2
+    400344: Plate
+    400346: Plate 1
+    400348: //RootNode
+    400350: Right_Side
+    400352: Slavery_Chains
+    400354: Stone_1
+    400356: Stone_2
+    400358: Stool_A
+    400360: Stool_A_Broken
+    400362: Stool_A_Broken 1
+    400364: Stools
+    400366: Table_A
+    400368: Table_B
+    400370: Table_C
+    400372: Table_Top
+    400374: Table_Top 1
+    400376: Table_Top 2
+    400378: Tables
+    400380: Torch
+    400382: Tunnel_Grate
+    400384: Tunnel_Grate_Broken
+    400386: Tunnel_Grate_Broken 1
+    400388: Tunnel_Grates
+    400390: Wood_Seat
+    2300000: Arch_Gate
+    2300002: Bar_1
+    2300004: Bar_2
+    2300006: Bar_3
+    2300008: Bar_4
+    2300010: Bar_5
+    2300012: Barrel
+    2300014: Bucket
+    2300016: Candle_A
+    2300018: Candle_B
+    2300020: Candle_C
+    2300022: Candle_D
+    2300024: Candle_E
+    2300026: Chain_Link_1
+    2300028: Chain_Link_1 1
+    2300030: Chain_Link_1 2
+    2300032: Chain_Link_1 3
+    2300034: Chain_Link_1 4
+    2300036: Chain_Link_10
+    2300038: Chain_Link_10 1
+    2300040: Chain_Link_10 2
+    2300042: Chain_Link_10 3
+    2300044: Chain_Link_10 4
+    2300046: Chain_Link_11
+    2300048: Chain_Link_11 1
+    2300050: Chain_Link_11 2
+    2300052: Chain_Link_11 3
+    2300054: Chain_Link_11 4
+    2300056: Chain_Link_12
+    2300058: Chain_Link_12 1
+    2300060: Chain_Link_12 2
+    2300062: Chain_Link_12 3
+    2300064: Chain_Link_12 4
+    2300066: Chain_Link_13
+    2300068: Chain_Link_13 1
+    2300070: Chain_Link_13 2
+    2300072: Chain_Link_14
+    2300074: Chain_Link_14 1
+    2300076: Chain_Link_14 2
+    2300078: Chain_Link_15
+    2300080: Chain_Link_15 1
+    2300082: Chain_Link_15 2
+    2300084: Chain_Link_16
+    2300086: Chain_Link_16 1
+    2300088: Chain_Link_16 2
+    2300090: Chain_Link_17
+    2300092: Chain_Link_17 1
+    2300094: Chain_Link_17 2
+    2300096: Chain_Link_18
+    2300098: Chain_Link_18 1
+    2300100: Chain_Link_18 2
+    2300102: Chain_Link_19
+    2300104: Chain_Link_19 1
+    2300106: Chain_Link_19 2
+    2300108: Chain_Link_2
+    2300110: Chain_Link_2 1
+    2300112: Chain_Link_2 2
+    2300114: Chain_Link_2 3
+    2300116: Chain_Link_2 4
+    2300118: Chain_Link_20
+    2300120: Chain_Link_20 1
+    2300122: Chain_Link_20 2
+    2300124: Chain_Link_21
+    2300126: Chain_Link_21 1
+    2300128: Chain_Link_21 2
+    2300130: Chain_Link_22
+    2300132: Chain_Link_22 1
+    2300134: Chain_Link_22 2
+    2300136: Chain_Link_23
+    2300138: Chain_Link_23 1
+    2300140: Chain_Link_23 2
+    2300142: Chain_Link_24
+    2300144: Chain_Link_24 1
+    2300146: Chain_Link_24 2
+    2300148: Chain_Link_25
+    2300150: Chain_Link_25 1
+    2300152: Chain_Link_25 2
+    2300154: Chain_Link_26
+    2300156: Chain_Link_26 1
+    2300158: Chain_Link_26 2
+    2300160: Chain_Link_27
+    2300162: Chain_Link_27 1
+    2300164: Chain_Link_27 2
+    2300166: Chain_Link_28
+    2300168: Chain_Link_28 1
+    2300170: Chain_Link_28 2
+    2300172: Chain_Link_29
+    2300174: Chain_Link_29 1
+    2300176: Chain_Link_29 2
+    2300178: Chain_Link_3
+    2300180: Chain_Link_3 1
+    2300182: Chain_Link_3 2
+    2300184: Chain_Link_3 3
+    2300186: Chain_Link_3 4
+    2300188: Chain_Link_30
+    2300190: Chain_Link_30 1
+    2300192: Chain_Link_30 2
+    2300194: Chain_Link_31
+    2300196: Chain_Link_31 1
+    2300198: Chain_Link_31 2
+    2300200: Chain_Link_32
+    2300202: Chain_Link_4
+    2300204: Chain_Link_4 1
+    2300206: Chain_Link_4 2
+    2300208: Chain_Link_4 3
+    2300210: Chain_Link_4 4
+    2300212: Chain_Link_5
+    2300214: Chain_Link_5 1
+    2300216: Chain_Link_5 2
+    2300218: Chain_Link_5 3
+    2300220: Chain_Link_5 4
+    2300222: Chain_Link_6
+    2300224: Chain_Link_6 1
+    2300226: Chain_Link_6 2
+    2300228: Chain_Link_6 3
+    2300230: Chain_Link_6 4
+    2300232: Chain_Link_7
+    2300234: Chain_Link_7 1
+    2300236: Chain_Link_7 2
+    2300238: Chain_Link_7 3
+    2300240: Chain_Link_7 4
+    2300242: Chain_Link_8
+    2300244: Chain_Link_8 1
+    2300246: Chain_Link_8 2
+    2300248: Chain_Link_8 3
+    2300250: Chain_Link_8 4
+    2300252: Chain_Link_9
+    2300254: Chain_Link_9 1
+    2300256: Chain_Link_9 2
+    2300258: Chain_Link_9 3
+    2300260: Chain_Link_9 4
+    2300262: Crate_A
+    2300264: Crate_B
+    2300266: Crate_C
+    2300268: Debris_1
+    2300270: Debris_1 1
+    2300272: Debris_2
+    2300274: Debris_2 1
+    2300276: Floor_Cage
+    2300278: Floor_Gate
+    2300280: Hanging_Cage
+    2300282: Hook
+    2300284: Hook 1
+    2300286: Key_A
+    2300288: Key_B
+    2300290: Key_C
+    2300292: Keychain
+    2300294: Left_Side
+    2300296: Leg_1
+    2300298: Leg_1 1
+    2300300: Leg_1 2
+    2300302: Leg_2
+    2300304: Leg_2 1
+    2300306: Leg_2 2
+    2300308: Leg_3
+    2300310: Leg_3 1
+    2300312: Leg_3 2
+    2300314: Leg_4
+    2300316: Leg_4 1
+    2300318: Leg_4 2
+    2300320: Peg_1
+    2300322: Peg_2
+    2300324: Plate
+    2300326: Plate 1
+    2300328: Right_Side
+    2300330: Stone_1
+    2300332: Stone_2
+    2300334: Stool_A
+    2300336: Stool_A_Broken 1
+    2300338: Table_Top
+    2300340: Table_Top 1
+    2300342: Table_Top 2
+    2300344: Torch
+    2300346: Tunnel_Grate
+    2300348: Tunnel_Grate_Broken 1
+    2300350: Wood_Seat
+    3300000: Arch_Gate
+    3300002: Bar_1
+    3300004: Bar_2
+    3300006: Bar_3
+    3300008: Bar_4
+    3300010: Bar_5
+    3300012: Barrel
+    3300014: Bucket
+    3300016: Candle_A
+    3300018: Candle_B
+    3300020: Candle_C
+    3300022: Candle_D
+    3300024: Candle_E
+    3300026: Chain_Link_1
+    3300028: Chain_Link_1 1
+    3300030: Chain_Link_1 2
+    3300032: Chain_Link_1 3
+    3300034: Chain_Link_1 4
+    3300036: Chain_Link_10
+    3300038: Chain_Link_10 1
+    3300040: Chain_Link_10 2
+    3300042: Chain_Link_10 3
+    3300044: Chain_Link_10 4
+    3300046: Chain_Link_11
+    3300048: Chain_Link_11 1
+    3300050: Chain_Link_11 2
+    3300052: Chain_Link_11 3
+    3300054: Chain_Link_11 4
+    3300056: Chain_Link_12
+    3300058: Chain_Link_12 1
+    3300060: Chain_Link_12 2
+    3300062: Chain_Link_12 3
+    3300064: Chain_Link_12 4
+    3300066: Chain_Link_13
+    3300068: Chain_Link_13 1
+    3300070: Chain_Link_13 2
+    3300072: Chain_Link_14
+    3300074: Chain_Link_14 1
+    3300076: Chain_Link_14 2
+    3300078: Chain_Link_15
+    3300080: Chain_Link_15 1
+    3300082: Chain_Link_15 2
+    3300084: Chain_Link_16
+    3300086: Chain_Link_16 1
+    3300088: Chain_Link_16 2
+    3300090: Chain_Link_17
+    3300092: Chain_Link_17 1
+    3300094: Chain_Link_17 2
+    3300096: Chain_Link_18
+    3300098: Chain_Link_18 1
+    3300100: Chain_Link_18 2
+    3300102: Chain_Link_19
+    3300104: Chain_Link_19 1
+    3300106: Chain_Link_19 2
+    3300108: Chain_Link_2
+    3300110: Chain_Link_2 1
+    3300112: Chain_Link_2 2
+    3300114: Chain_Link_2 3
+    3300116: Chain_Link_2 4
+    3300118: Chain_Link_20
+    3300120: Chain_Link_20 1
+    3300122: Chain_Link_20 2
+    3300124: Chain_Link_21
+    3300126: Chain_Link_21 1
+    3300128: Chain_Link_21 2
+    3300130: Chain_Link_22
+    3300132: Chain_Link_22 1
+    3300134: Chain_Link_22 2
+    3300136: Chain_Link_23
+    3300138: Chain_Link_23 1
+    3300140: Chain_Link_23 2
+    3300142: Chain_Link_24
+    3300144: Chain_Link_24 1
+    3300146: Chain_Link_24 2
+    3300148: Chain_Link_25
+    3300150: Chain_Link_25 1
+    3300152: Chain_Link_25 2
+    3300154: Chain_Link_26
+    3300156: Chain_Link_26 1
+    3300158: Chain_Link_26 2
+    3300160: Chain_Link_27
+    3300162: Chain_Link_27 1
+    3300164: Chain_Link_27 2
+    3300166: Chain_Link_28
+    3300168: Chain_Link_28 1
+    3300170: Chain_Link_28 2
+    3300172: Chain_Link_29
+    3300174: Chain_Link_29 1
+    3300176: Chain_Link_29 2
+    3300178: Chain_Link_3
+    3300180: Chain_Link_3 1
+    3300182: Chain_Link_3 2
+    3300184: Chain_Link_3 3
+    3300186: Chain_Link_3 4
+    3300188: Chain_Link_30
+    3300190: Chain_Link_30 1
+    3300192: Chain_Link_30 2
+    3300194: Chain_Link_31
+    3300196: Chain_Link_31 1
+    3300198: Chain_Link_31 2
+    3300200: Chain_Link_32
+    3300202: Chain_Link_4
+    3300204: Chain_Link_4 1
+    3300206: Chain_Link_4 2
+    3300208: Chain_Link_4 3
+    3300210: Chain_Link_4 4
+    3300212: Chain_Link_5
+    3300214: Chain_Link_5 1
+    3300216: Chain_Link_5 2
+    3300218: Chain_Link_5 3
+    3300220: Chain_Link_5 4
+    3300222: Chain_Link_6
+    3300224: Chain_Link_6 1
+    3300226: Chain_Link_6 2
+    3300228: Chain_Link_6 3
+    3300230: Chain_Link_6 4
+    3300232: Chain_Link_7
+    3300234: Chain_Link_7 1
+    3300236: Chain_Link_7 2
+    3300238: Chain_Link_7 3
+    3300240: Chain_Link_7 4
+    3300242: Chain_Link_8
+    3300244: Chain_Link_8 1
+    3300246: Chain_Link_8 2
+    3300248: Chain_Link_8 3
+    3300250: Chain_Link_8 4
+    3300252: Chain_Link_9
+    3300254: Chain_Link_9 1
+    3300256: Chain_Link_9 2
+    3300258: Chain_Link_9 3
+    3300260: Chain_Link_9 4
+    3300262: Crate_A
+    3300264: Crate_B
+    3300266: Crate_C
+    3300268: Debris_1
+    3300270: Debris_1 1
+    3300272: Debris_2
+    3300274: Debris_2 1
+    3300276: Floor_Cage
+    3300278: Floor_Gate
+    3300280: Hanging_Cage
+    3300282: Hook
+    3300284: Hook 1
+    3300286: Key_A
+    3300288: Key_B
+    3300290: Key_C
+    3300292: Keychain
+    3300294: Left_Side
+    3300296: Leg_1
+    3300298: Leg_1 1
+    3300300: Leg_1 2
+    3300302: Leg_2
+    3300304: Leg_2 1
+    3300306: Leg_2 2
+    3300308: Leg_3
+    3300310: Leg_3 1
+    3300312: Leg_3 2
+    3300314: Leg_4
+    3300316: Leg_4 1
+    3300318: Leg_4 2
+    3300320: Peg_1
+    3300322: Peg_2
+    3300324: Plate
+    3300326: Plate 1
+    3300328: Right_Side
+    3300330: Stone_1
+    3300332: Stone_2
+    3300334: Stool_A
+    3300336: Stool_A_Broken 1
+    3300338: Table_Top
+    3300340: Table_Top 1
+    3300342: Table_Top 2
+    3300344: Torch
+    3300346: Tunnel_Grate
+    3300348: Tunnel_Grate_Broken 1
+    3300350: Wood_Seat
+    4300000: Wood_Seat
+    4300002: Stone_1
+    4300004: Stone_2
+    4300006: Table_Top
+    4300008: Leg_1
+    4300010: Leg_2
+    4300012: Leg_3
+    4300014: Leg_4
+    4300016: Table_Top
+    4300018: Leg_1
+    4300020: Leg_2
+    4300022: Leg_3
+    4300024: Leg_4
+    4300026: Table_Top
+    4300028: Leg_1
+    4300030: Leg_2
+    4300032: Leg_3
+    4300034: Leg_4
+    4300036: Left_Side
+    4300038: Right_Side
+    4300040: Bar_1
+    4300042: Bar_2
+    4300044: Bar_3
+    4300046: Bar_4
+    4300048: Bar_5
+    4300050: Stool_A
+    4300052: Stool_A_Broken
+    4300054: Debris_1
+    4300056: Debris_2
+    4300058: Barrel
+    4300060: Keychain
+    4300062: Key_A
+    4300064: Key_B
+    4300066: Key_C
+    4300068: Bucket
+    4300070: Crate_A
+    4300072: Crate_B
+    4300074: Crate_C
+    4300076: Torch
+    4300078: Peg_1
+    4300080: Peg_2
+    4300082: Chain_Link_1
+    4300084: Chain_Link_2
+    4300086: Chain_Link_3
+    4300088: Chain_Link_4
+    4300090: Chain_Link_5
+    4300092: Chain_Link_6
+    4300094: Chain_Link_7
+    4300096: Chain_Link_8
+    4300098: Chain_Link_9
+    4300100: Chain_Link_10
+    4300102: Chain_Link_11
+    4300104: Chain_Link_12
+    4300106: Chain_Link_13
+    4300108: Chain_Link_14
+    4300110: Chain_Link_15
+    4300112: Chain_Link_16
+    4300114: Chain_Link_17
+    4300116: Chain_Link_18
+    4300118: Chain_Link_19
+    4300120: Chain_Link_20
+    4300122: Chain_Link_21
+    4300124: Chain_Link_22
+    4300126: Chain_Link_23
+    4300128: Chain_Link_24
+    4300130: Chain_Link_25
+    4300132: Chain_Link_26
+    4300134: Chain_Link_27
+    4300136: Chain_Link_28
+    4300138: Chain_Link_29
+    4300140: Chain_Link_30
+    4300142: Chain_Link_31
+    4300144: Plate
+    4300146: Chain_Link_1
+    4300148: Chain_Link_2
+    4300150: Chain_Link_3
+    4300152: Chain_Link_4
+    4300154: Chain_Link_5
+    4300156: Chain_Link_6
+    4300158: Chain_Link_7
+    4300160: Chain_Link_8
+    4300162: Chain_Link_9
+    4300164: Chain_Link_10
+    4300166: Chain_Link_11
+    4300168: Chain_Link_12
+    4300170: Hook
+    4300172: Chain_Link_1
+    4300174: Chain_Link_2
+    4300176: Chain_Link_3
+    4300178: Chain_Link_4
+    4300180: Chain_Link_5
+    4300182: Chain_Link_6
+    4300184: Chain_Link_7
+    4300186: Chain_Link_8
+    4300188: Chain_Link_9
+    4300190: Chain_Link_10
+    4300192: Chain_Link_11
+    4300194: Chain_Link_12
+    4300196: Chain_Link_13
+    4300198: Chain_Link_14
+    4300200: Chain_Link_15
+    4300202: Chain_Link_16
+    4300204: Chain_Link_17
+    4300206: Chain_Link_18
+    4300208: Chain_Link_19
+    4300210: Chain_Link_20
+    4300212: Chain_Link_21
+    4300214: Chain_Link_22
+    4300216: Chain_Link_23
+    4300218: Chain_Link_24
+    4300220: Chain_Link_25
+    4300222: Chain_Link_26
+    4300224: Chain_Link_27
+    4300226: Chain_Link_28
+    4300228: Chain_Link_29
+    4300230: Chain_Link_30
+    4300232: Chain_Link_31
+    4300234: Chain_Link_32
+    4300236: Chain_Link_1
+    4300238: Chain_Link_2
+    4300240: Chain_Link_3
+    4300242: Chain_Link_4
+    4300244: Chain_Link_5
+    4300246: Chain_Link_6
+    4300248: Chain_Link_7
+    4300250: Chain_Link_8
+    4300252: Chain_Link_9
+    4300254: Chain_Link_10
+    4300256: Chain_Link_11
+    4300258: Chain_Link_12
+    4300260: Chain_Link_13
+    4300262: Chain_Link_14
+    4300264: Chain_Link_15
+    4300266: Chain_Link_16
+    4300268: Chain_Link_17
+    4300270: Chain_Link_18
+    4300272: Chain_Link_19
+    4300274: Chain_Link_20
+    4300276: Chain_Link_21
+    4300278: Chain_Link_22
+    4300280: Chain_Link_23
+    4300282: Chain_Link_24
+    4300284: Chain_Link_25
+    4300286: Chain_Link_26
+    4300288: Chain_Link_27
+    4300290: Chain_Link_28
+    4300292: Chain_Link_29
+    4300294: Chain_Link_30
+    4300296: Chain_Link_31
+    4300298: Plate
+    4300300: Chain_Link_1
+    4300302: Chain_Link_2
+    4300304: Chain_Link_3
+    4300306: Chain_Link_4
+    4300308: Chain_Link_5
+    4300310: Chain_Link_6
+    4300312: Chain_Link_7
+    4300314: Chain_Link_8
+    4300316: Chain_Link_9
+    4300318: Chain_Link_10
+    4300320: Chain_Link_11
+    4300322: Chain_Link_12
+    4300324: Hook
+    4300326: Floor_Gate
+    4300328: Arch_Gate
+    4300330: Hanging_Cage
+    4300332: Floor_Cage
+    4300334: Tunnel_Grate
+    4300336: Tunnel_Grate_Broken
+    4300338: Debris_1
+    4300340: Debris_2
+    4300342: Candle_A
+    4300344: Candle_B
+    4300346: Candle_C
+    4300348: Candle_D
+    4300350: Candle_E
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
