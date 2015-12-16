@@ -8,12 +8,15 @@ public class PlayerController : MonoBehaviour {
 	private float movementSpeed;
 	[SerializeField]
 	private float verticalViewAngle;
+	private Animator animator;
+	private bool isPunched = false;
 
 	private float verticalRotation;
 	private CharacterController characterController;
 
 	// Use this for initialization
 	void Start () {
+		this.animator = GetComponent<Animator> ();
 		this.characterController = this.GetComponent<CharacterController>();
 		this.verticalRotation = 0.0f;
 
@@ -46,10 +49,35 @@ public class PlayerController : MonoBehaviour {
 		// x - move left/right - 80% of it, since this movement seems to be faster than 
 		// the front/backwards movement with equal speed value
 		float x = Input.GetAxis("Horizontal") * movementSpeed * 0.80f;
-		
-		// need to multiply with rotation, otherwise we keep going 1 way (even if we rotate)
-		Vector3 speed = this.transform.rotation * new Vector3(x, 0.0f, z);
-		
-		this.characterController.SimpleMove(speed);
+
+		if (Input.GetAxis("Vertical") != 0) {
+			if (Input.GetKey (KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift)) {
+				this.animator.SetBool ("Running", true);
+				this.animator.speed = 4.0f;
+				z = z * 4.0f;
+			} else {
+				this.animator.speed = 2.0f;
+				this.animator.SetBool("Walk", true);
+				this.animator.SetBool("Running", false);
+			}
+
+			// need to multiply with rotation, otherwise we keep going 1 way (even if we rotate)
+			Vector3 speed = this.transform.rotation * new Vector3(x, 0.0f, z);
+
+			this.characterController.SimpleMove(speed);
+		} else {
+			this.animator.SetBool("Walk", false);
+			this.animator.SetBool("Running", false);
+
+			if (this.isPunched) {
+				this.animator.SetBool ("Punched", true);
+			} else {
+				this.animator.SetBool ("Punched", false);
+			}
+		}
+	}
+
+	public void setPunched(bool punched) {
+		this.isPunched = punched;
 	}
 }
