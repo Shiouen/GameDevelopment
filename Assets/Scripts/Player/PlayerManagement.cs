@@ -7,35 +7,24 @@ public class PlayerManagement : MonoBehaviour {
 	private bool keyFound;
 	private bool compassFound;
 	private bool clockFound;
-	private GameObject FoundClock;
-	private GameObject FoundCompass;
-	private GameObject FoundFlashlight;
-	private GameObject FoundGun;
-	private GameObject FoundKey;
-	
+	private float health;
+	private HUDManagement HUD;
+
 	private bool ItemsFound {
 		get {
-			return this.flashlightFound && this.clockFound && this.gunFound && this.keyFound && this.compassFound;
+			return this.flashlightFound || this.clockFound || this.gunFound || this.keyFound || this.compassFound;
 		}
 	}
 	
 	// Use this for initialization
 	public void Start () {
+		this.HUD = GetComponent<HUDManagement> ();
 		this.flashlightFound = false;
 		this.clockFound = false;
 		this.gunFound = false;
 		this.keyFound = false;
 		this.compassFound = false;
-		this.FoundClock = GameObject.Find ("FoundClock");
-		this.FoundCompass = GameObject.Find ("FoundCompass");
-		this.FoundFlashlight = GameObject.Find ("FoundFlashlight");
-		this.FoundGun = GameObject.Find ("FoundGun");
-		this.FoundKey = GameObject.Find ("FoundKey");
-		this.FoundClock.SetActive (false);
-		this.FoundCompass.SetActive (false);
-		this.FoundFlashlight.SetActive (false);
-		this.FoundGun.SetActive (false);
-		this.FoundKey.SetActive (false);
+		this.health = 100;
 	}
 	
 	// Update is called once per frame
@@ -49,29 +38,45 @@ public class PlayerManagement : MonoBehaviour {
 			switch(other.gameObject.name) {
 			case "Clock(Clone)":
 				this.clockFound = true;
-				this.FoundClock.SetActive(true);
+				this.HUD.makeActive ("clock");
 				break;
 			case "Compass(Clone)":
 				this.compassFound = true;
-				this.FoundCompass.SetActive(true);
+				this.HUD.makeActive ("compass");
 				break;
 			case "Flashlight(Clone)":
 				this.flashlightFound = true;
-				this.FoundFlashlight.SetActive(true);
+				this.HUD.makeActive ("flashlight");
 				break;
 			case "Gun(Clone)":
 				this.gunFound = true;
-				this.FoundGun.SetActive(true);
+				this.HUD.makeActive ("gun");
 				break;
 			case "Key(Clone)":
 				this.keyFound = true;
-				this.FoundKey.SetActive(true);
+				this.HUD.makeActive ("key");
 				break;
 			}
 
 			if (this.ItemsFound) {
-				// proceed gameee
+				this.HUD.startTimer();
 			}
+		}
+	}
+
+	public float getHealth() {
+		return this.health;
+	}
+
+	public void makeDamage() {
+		this.health -= 0.5f;
+		this.HUD.setHealth (this.health);
+	}
+
+	public void repairDamage() {
+		if (this.health < 100) {
+			this.health += 0.5f;
+			this.HUD.setHealth (this.health);
 		}
 	}
 }

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
 
 	private float verticalRotation;
 	private CharacterController characterController;
+	private PlayerManagement playerManagement;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour {
 
 		//Cursor.lockState = CursorLockMode.Locked;
 		//Cursor.visible = false;
+
+		this.playerManagement = GetComponent<PlayerManagement> ();
 	}
 
 	// Update is called once per frame
@@ -53,12 +56,14 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetAxis("Vertical") != 0) {
 			if (Input.GetKey (KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift)) {
 				this.animator.SetBool ("Running", true);
+				this.animator.SetBool ("Punched", false);
 				this.animator.speed = 4.0f;
 				z = z * 4.0f;
 			} else {
 				this.animator.speed = 2.0f;
 				this.animator.SetBool("Walk", true);
 				this.animator.SetBool("Running", false);
+				this.animator.SetBool ("Punched", false);
 			}
 
 			// need to multiply with rotation, otherwise we keep going 1 way (even if we rotate)
@@ -79,5 +84,10 @@ public class PlayerController : MonoBehaviour {
 
 	public void setPunched(bool punched) {
 		this.isPunched = punched;
+		if (punched)
+			this.playerManagement.makeDamage ();
+		else {
+			this.playerManagement.repairDamage ();
+		}
 	}
 }

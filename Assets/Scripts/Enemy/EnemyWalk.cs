@@ -8,7 +8,7 @@ public class EnemyWalk : MonoBehaviour {
 	private float animatorSpeed = 2.0f;
 	private float agentSpeed = 2.0f;
 	private float agentRunSpeed = 5.0f;
-	private float ATTACK_DISTANCE = 4;
+	private float ATTACK_DISTANCE = 1;
 	private float RUNNING_DISTANCE = 200;
 	private GameObject player;
 	private NavMeshAgent agent;

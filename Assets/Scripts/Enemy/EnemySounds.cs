@@ -37,8 +37,8 @@ public class EnemySounds : MonoBehaviour {
         this.hearableDistance = (this.hearableDistance == 0) ? 200 : this.hearableDistance;
         this.hearableChaseDistance = (this.hearableChaseDistance == 0) ? 100 : this.hearableChaseDistance;
 
-        Debug.Log(this.hearableDistance);
-        Debug.Log(this.hearableChaseDistance);
+        //Debug.Log(this.hearableDistance);
+        //Debug.Log(this.hearableChaseDistance);
     }
 	
 	// Update is called once per frame
@@ -64,7 +64,7 @@ public class EnemySounds : MonoBehaviour {
 
     private void playSound() {
         if (this.DistanceToPlayer <= this.hearableDistance) {
-            Debug.Log("I played");
+            //Debug.Log("I played");
             this.sounds[this.currentSoundIndex].Play();
         }
     }
