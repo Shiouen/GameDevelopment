@@ -53,32 +53,22 @@ public class PlayerController : MonoBehaviour {
 		// the front/backwards movement with equal speed value
 		float x = Input.GetAxis("Horizontal") * movementSpeed * 0.80f;
 
-		if (Input.GetAxis("Vertical") != 0) {
-			if (Input.GetKey (KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift)) {
-				this.animator.SetBool ("Running", true);
-				this.animator.SetBool ("Punched", false);
-				this.animator.speed = 4.0f;
-				z = z * 4.0f;
-			} else {
-				this.animator.speed = 2.0f;
-				this.animator.SetBool("Walk", true);
-				this.animator.SetBool("Running", false);
-				this.animator.SetBool ("Punched", false);
-			}
+		if (Input.GetAxis ("Vertical") != 0 && (Input.GetKey (KeyCode.RightShift) || Input.GetKey (KeyCode.LeftShift))) {
+			this.playerManagement.setState ("running");
 
 			// need to multiply with rotation, otherwise we keep going 1 way (even if we rotate)
+			z = z * 3.0f;
 			Vector3 speed = this.transform.rotation * new Vector3(x, 0.0f, z);
+			this.characterController.SimpleMove(speed);
+		} else if (Input.GetAxis ("Vertical") != 0) {
+			this.playerManagement.setState ("walking");
 
+			// need to multiply with rotation, otherwise we keep going 1 way (even if we rotate)
+			z = z * 0.5f;
+			Vector3 speed = this.transform.rotation * new Vector3(x, 0.0f, z);
 			this.characterController.SimpleMove(speed);
 		} else {
-			this.animator.SetBool("Walk", false);
-			this.animator.SetBool("Running", false);
-
-			if (this.isPunched) {
-				this.animator.SetBool ("Punched", true);
-			} else {
-				this.animator.SetBool ("Punched", false);
-			}
+			this.playerManagement.setState ("standing");
 		}
 	}
 
