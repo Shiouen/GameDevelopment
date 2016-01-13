@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class PlayerManagement : MonoBehaviour {
-	enum State { standing, walking, running, death };
+	enum State { standing, walking, running, attacked, death };
 
 	private bool flashlightFound;
 	private bool gunFound;
@@ -42,8 +42,9 @@ public class PlayerManagement : MonoBehaviour {
 	// Update is called once per frame
 	public void Update () {
 		this.animator.SetBool ("Standing", false);
-		this.animator.SetBool ("Walk", false);
+		this.animator.SetBool ("Walking", false);
 		this.animator.SetBool ("Running", false);
+		this.animator.SetBool ("Attacked", false);
 		if (this.health == 0) this.state = State.death;
 
 		switch (this.state) {
@@ -52,11 +53,14 @@ public class PlayerManagement : MonoBehaviour {
 			break;
 		case State.walking:
 			this.animator.speed = 2.0f;
-			this.animator.SetBool ("Walk", true);
+			this.animator.SetBool ("Walking", true);
 			break;
 		case State.running:
-			this.animator.speed = 3.0f;
+			this.animator.speed = 2.0f;
 			this.animator.SetBool ("Running", true);
+			break;
+		case State.attacked:
+			this.animator.SetBool ("Attacked", true);
 			break;
 		case State.death:
 			this.animator.SetBool ("Death", true);
@@ -103,6 +107,8 @@ public class PlayerManagement : MonoBehaviour {
 	}
 
 	public void makeDamage() {
+		Debug.Log ("make");
+
 		if (this.health <= 0) {
 			this.health = 0;
 		} else {
@@ -112,6 +118,8 @@ public class PlayerManagement : MonoBehaviour {
 	}
 
 	public void repairDamage() {
+		Debug.Log ("repair");
+
 		if (this.health < 100) {
 			this.health += 0.5f;
 			this.HUD.setHealth (this.health);
@@ -128,6 +136,9 @@ public class PlayerManagement : MonoBehaviour {
 			break;
 		case "running":
 			this.state = State.running;
+			break;
+		case "attacked":
+			this.state = State.attacked;
 			break;
 		case "death":
 			this.state = State.death;

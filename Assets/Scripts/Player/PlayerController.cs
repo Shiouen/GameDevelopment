@@ -8,8 +8,7 @@ public class PlayerController : MonoBehaviour {
 	private float movementSpeed;
 	[SerializeField]
 	private float verticalViewAngle;
-	private Animator animator;
-	private bool isPunched = false;
+	private bool isAttacked = false;
 
 	private float verticalRotation;
 	private CharacterController characterController;
@@ -17,7 +16,6 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.animator = GetComponent<Animator> ();
 		this.characterController = this.GetComponent<CharacterController>();
 		this.verticalRotation = 0.0f;
 
@@ -53,31 +51,39 @@ public class PlayerController : MonoBehaviour {
 		// the front/backwards movement with equal speed value
 		float x = Input.GetAxis("Horizontal") * movementSpeed * 0.80f;
 
+		// Automatic damage repair of the player when he's not under attack
+		if (!this.isAttacked) { this.repairDamage(); }
+
+		// Set state of Player
 		if (Input.GetAxis ("Vertical") != 0 && (Input.GetKey (KeyCode.RightShift) || Input.GetKey (KeyCode.LeftShift))) {
 			this.playerManagement.setState ("running");
 
 			// need to multiply with rotation, otherwise we keep going 1 way (even if we rotate)
-			z = z * 3.0f;
-			Vector3 speed = this.transform.rotation * new Vector3(x, 0.0f, z);
-			this.characterController.SimpleMove(speed);
+			z = z * 2.0f;
+			Vector3 speed = this.transform.rotation * new Vector3 (x, 0.0f, z);
+			this.characterController.SimpleMove (speed);
 		} else if (Input.GetAxis ("Vertical") != 0) {
 			this.playerManagement.setState ("walking");
 
 			// need to multiply with rotation, otherwise we keep going 1 way (even if we rotate)
-			z = z * 0.5f;
-			Vector3 speed = this.transform.rotation * new Vector3(x, 0.0f, z);
-			this.characterController.SimpleMove(speed);
+			z = z * 0.3f;
+			Vector3 speed = this.transform.rotation * new Vector3 (x, 0.0f, z);
+			this.characterController.SimpleMove (speed);
+		} else if (this.isAttacked) {
+			this.playerManagement.setState ("attacked");
 		} else {
 			this.playerManagement.setState ("standing");
 		}
 	}
 
-	public void setPunched(bool punched) {
-		this.isPunched = punched;
-		if (punched)
+	public void setAttacked(bool attacked) {
+		this.isAttacked = attacked;
+		if (attacked) {
 			this.playerManagement.makeDamage ();
-		else {
-			this.playerManagement.repairDamage ();
 		}
+	}
+
+	private void repairDamage() {
+		this.playerManagement.repairDamage ();
 	}
 }
