@@ -37,53 +37,53 @@ public class EnemyManagement : MonoBehaviour {
 		this.zombie.SetDestination (this.player.transform.position);
 
 		switch (this.state) {
-		case State.walking:
-			this.animator.speed = 1.9f;
-			this.animator.SetBool ("Walking", true);
-			this.zombie.Resume ();
-			this.zombie.speed = 3.0f;
+		    case State.walking:
+			    this.animator.speed = 1.9f;
+			    this.animator.SetBool ("Walking", true);
+			    this.zombie.Resume ();
+			    this.zombie.speed = 3.0f;
 
-			// Let player know that he's not under attack if he was
-			if (this.isAttacking) {
-				this.isAttacking = false;
-				this.playerController.setAttacked (false);
-			}
-			break;
-		case State.running:
-			this.animator.speed = 3.0f;
-			this.animator.SetBool ("Running", true);
-			this.zombie.Resume ();
-			this.zombie.speed = 6.0f;
+			    // Let player know that he's not under attack if he was
+			    if (this.isAttacking) {
+				    this.isAttacking = false;
+				    this.playerController.setAttacked (false);
+			    }
+			    break;
+		    case State.running:
+			    this.animator.speed = 3.0f;
+			    this.animator.SetBool ("Running", true);
+			    this.zombie.Resume ();
+			    this.zombie.speed = 6.0f;
 
-			// Let player know that he's not under attack if he was
-			if (this.isAttacking) {
-				this.isAttacking = false;
-				this.playerController.setAttacked (false);
-			}
-			break;
-		case State.attacking:
-			this.animator.speed = 1.5f;
-			this.animator.SetBool ("Attacking", true);
-			this.zombie.Stop ();
+			    // Let player know that he's not under attack if he was
+			    if (this.isAttacking) {
+				    this.isAttacking = false;
+				    this.playerController.setAttacked (false);
+			    }
+			    break;
+		    case State.attacking:
+			    this.animator.speed = 1.5f;
+			    this.animator.SetBool ("Attacking", true);
+			    this.zombie.Stop ();
 
-			this.isAttacking = true;
-			this.playerController.setAttacked (true);
-			break;
+			    this.isAttacking = true;
+			    this.playerController.setAttacked (true);
+			    break;
 		}
 	}
 
 	public void setState(string state) {
 		switch (state) {
-		case "walking":
-			this.state = State.walking;
-			break;
-		case "running":
-			this.state = State.running;
-			break;
-		case "attacking":
-			this.state = State.attacking;
-			break;
-		}
+		    case "walking":
+			    this.state = State.walking;
+			    break;
+		    case "running":
+			    this.state = State.running;
+			    break;
+		    case "attacking":
+			    this.state = State.attacking;
+			    break;
+		    }
 	}
 }
 

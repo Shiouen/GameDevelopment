@@ -57,29 +57,29 @@ public class PlayerManagement : MonoBehaviour {
 		if (this.health == 0) this.state = State.death;
 
 		switch (this.state) {
-		case State.standing:
-			this.animator.SetBool ("Standing", true);
-			break;
-		case State.walking:
-			this.animator.speed = 2.0f;
-			this.animator.SetBool ("Walking", true);
-			break;
-		case State.running:
-			this.animator.speed = 2.0f;
-			this.animator.SetBool ("Running", true);
-			break;
-		case State.attacked:
-			this.animator.SetBool ("Attacked", true);
-			break;
-		case State.death:
-			this.animator.SetBool ("Death", true);
-			if (this.gameOver.color.a < 1) {
-				Color tempGameOver = this.gameOver.color;
-				tempGameOver.a += 0.01f;
-				this.gameOver.color = tempGameOver;
-			}
-			StartCoroutine(EndGameOver());
-			break;
+		    case State.standing:
+			    this.animator.SetBool ("Standing", true);
+			    break;
+		    case State.walking:
+			    this.animator.speed = 2.0f;
+			    this.animator.SetBool ("Walking", true);
+			    break;
+		    case State.running:
+			    this.animator.speed = 2.0f;
+			    this.animator.SetBool ("Running", true);
+			    break;
+		    case State.attacked:
+			    this.animator.SetBool ("Attacked", true);
+			    break;
+		    case State.death:
+			    this.animator.SetBool ("Death", true);
+			    if (this.gameOver.color.a < 1) {
+				    Color tempGameOver = this.gameOver.color;
+				    tempGameOver.a += 0.01f;
+				    this.gameOver.color = tempGameOver;
+			    }
+			    StartCoroutine(EndGameOver());
+			    break;
 		}
 	}
 
