@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -13,6 +14,8 @@ public class PlayerController : MonoBehaviour {
 	private float verticalRotation;
 	private CharacterController characterController;
 	private PlayerManagement playerManagement;
+
+	public Image minimapplayer; 
 
 	// Use this for initialization
 	void Start () {
@@ -62,6 +65,10 @@ public class PlayerController : MonoBehaviour {
 			z = z * 2.0f;
 			Vector3 speed = this.transform.rotation * new Vector3 (x, 0.0f, z);
 			this.characterController.SimpleMove (speed);
+
+			// calculation for minimap
+			speed.y = speed.z;
+			this.minimapplayer.transform.position = this.minimapplayer.transform.position + speed/115;
 		} else if (Input.GetAxis ("Vertical") != 0) {
 			this.playerManagement.setState ("walking");
 
@@ -69,6 +76,10 @@ public class PlayerController : MonoBehaviour {
 			z = z * 0.3f;
 			Vector3 speed = this.transform.rotation * new Vector3 (x, 0.0f, z);
 			this.characterController.SimpleMove (speed);
+
+			// calculation for minimap
+			speed.y = speed.z;
+			this.minimapplayer.transform.position = this.minimapplayer.transform.position + speed/115;
 		} else if (this.isAttacked) {
 			this.playerManagement.setState ("attacked");
 		} else {

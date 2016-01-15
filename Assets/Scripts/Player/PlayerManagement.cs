@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerManagement : MonoBehaviour {
 	enum State { standing, walking, running, attacked, death };
 
+	public Text gameOver;
 	private bool flashlightFound;
 	private bool gunFound;
 	private bool keyFound;
@@ -13,6 +15,8 @@ public class PlayerManagement : MonoBehaviour {
 	private State state;
 	private Animator animator;
 	private HUDManagement HUD;
+	private GameObject levelManagerObj;
+	private LevelManager levelManager;
 
 	private bool ItemsFound {
 		get {
@@ -24,6 +28,8 @@ public class PlayerManagement : MonoBehaviour {
 	public void Start () {
 		this.HUD = GetComponent<HUDManagement> ();
 		this.animator = GetComponent<Animator> ();
+		this.levelManagerObj = GameObject.Find("LevelManager");
+		this.levelManager = this.levelManagerObj.GetComponent<LevelManager>();
 
 		// Attributes initially not found
 		this.flashlightFound = false;
@@ -31,6 +37,9 @@ public class PlayerManagement : MonoBehaviour {
 		this.gunFound = false;
 		this.keyFound = false;
 		this.compassFound = false;
+		Color tempGameOver = this.gameOver.color;
+		tempGameOver.a = 0;
+		this.gameOver.color = tempGameOver;
 
 		// Initial health
 		this.health = 100;
@@ -64,8 +73,19 @@ public class PlayerManagement : MonoBehaviour {
 			break;
 		case State.death:
 			this.animator.SetBool ("Death", true);
+			if (this.gameOver.color.a < 1) {
+				Color tempGameOver = this.gameOver.color;
+				tempGameOver.a += 0.01f;
+				this.gameOver.color = tempGameOver;
+			}
+			StartCoroutine(EndGameOver());
 			break;
 		}
+	}
+
+	IEnumerator EndGameOver() {
+		yield return new WaitForSeconds(3);
+		this.levelManager.LoadScene ("EndGameOver");
 	}
 
 	// Registers when the player catches an attribute
