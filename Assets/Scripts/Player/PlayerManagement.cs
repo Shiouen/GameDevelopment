@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerManagement : MonoBehaviour {
-	enum State { standing, walking, running, attacked, death };
+	enum State { standing, walking, running, attacked, death, won };
 
 	private bool flashlightFound;
 	private bool gunFound;
@@ -11,6 +11,7 @@ public class PlayerManagement : MonoBehaviour {
 	private bool compassFound;
 	private bool clockFound;
 	private float health;
+	private float score;
 	private State state;
 	private Animator animator;
 	private HUDManagement HUD;
@@ -37,8 +38,9 @@ public class PlayerManagement : MonoBehaviour {
 		this.keyFound = false;
 		this.compassFound = false;
 
-		// Initial health
+		// Initial health & score
 		this.health = 100;
+		this.score = 0;
 
 		// Initial state
 		this.state = State.standing;
@@ -72,6 +74,11 @@ public class PlayerManagement : MonoBehaviour {
 				this.HUD.showGameOverHUD ();
 				this.gameManagement.setState ("gameover");
 			    break;
+			case State.won:
+				this.HUD.showWonHUD ();
+				this.gameManagement.setScore (this.score);
+				this.gameManagement.setState ("won");
+				break;
 		}
 	}
 
@@ -106,6 +113,9 @@ public class PlayerManagement : MonoBehaviour {
 			if (this.ItemsFound) {
 				StartCoroutine(this.HUD.startTimer());
 			}
+		} else if(other.tag.Equals("WinningAttribute")) {
+			other.gameObject.SetActive(false);
+			this.setState("won");
 		}
 	}
 
@@ -150,11 +160,18 @@ public class PlayerManagement : MonoBehaviour {
 		case "death":
 			this.state = State.death;
 			break;
+		case "won":
+			this.state = State.won;
+			break;
 		}
 	}
 
 	public void moveMinimapPlayer(Vector3 speed, Vector3 previousPosition) {
 		this.HUD.moveMinimapPlayer (speed, previousPosition);
+	}
+
+	public void setScore(float score) {
+		this.score = score;
 	}
 }
 

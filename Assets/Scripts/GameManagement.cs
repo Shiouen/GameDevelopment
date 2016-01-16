@@ -4,6 +4,7 @@ using System.Collections;
 public class GameManagement : MonoBehaviour {
 	enum State { Playing, GameOver, Won };
 
+	private float score;
 	private State state;
 	private GameObject levelManagerObj;
 	private LevelManager levelManager;
@@ -13,6 +14,7 @@ public class GameManagement : MonoBehaviour {
 		this.levelManagerObj = GameObject.Find("LevelManager");
 		this.levelManager = this.levelManagerObj.GetComponent<LevelManager>();
 		this.state = State.Playing;
+		this.score = 0;
 	}
 	
 	// Update is called once per frame
@@ -37,7 +39,6 @@ public class GameManagement : MonoBehaviour {
 	public IEnumerator EndGameOver() {
 		yield return new WaitForSeconds(3);
 		this.levelManager.LoadScene ("EndGameOver");
-
 		// preparing for new game if the player wants to play again
 		this.initializeGame();
 	}
@@ -45,9 +46,11 @@ public class GameManagement : MonoBehaviour {
 	public IEnumerator Won() {
 		yield return new WaitForSeconds(3);
 		this.levelManager.LoadScene ("EndGameWon");
-
 		// preparing for new game if the player wants to play again
 		this.initializeGame();
+
+		PlayerPrefs.SetFloat ("Highscores",this.score);
+		PlayerPrefs.Save ();
 	}
 
 	private void initializeGame() {
@@ -73,4 +76,7 @@ public class GameManagement : MonoBehaviour {
 		}
 	}
 
+	public void setScore(float score) {
+		this.score = score;
+	}
 }

@@ -3,8 +3,10 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class HUDManagement : MonoBehaviour {
+	private float MAX_TIME = 1000.0f;
+
 	public Text countDown;
-	public Text gameOver;
+	public Text endGame;
 	private float startTime;
 	private bool isTimerActive;
 
@@ -41,14 +43,14 @@ public class HUDManagement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// Countdown
-		this.startTime = 10.0f;
+		this.startTime = MAX_TIME;
 		this.isTimerActive = false;
 		this.countDown.text = "";
 		this.activeColor = new Color32(22,255,123,255);
 
-		Color tempGameOver = this.gameOver.color;
-		tempGameOver.a = 0;
-		this.gameOver.color = tempGameOver;
+		Color tempEndGame = this.endGame.color;
+		tempEndGame.a = 0;
+		this.endGame.color = tempEndGame;
 
 		float x = Screen.width-(this.minimap.rectTransform.sizeDelta.x/2);
 		float y = this.minimap.rectTransform.sizeDelta.y/2;
@@ -64,10 +66,10 @@ public class HUDManagement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (this.isTimerActive && this.startTime >= 0) {
-			if (this.startTime < 5)
-				this.countDown.color = Color.red;
+			if (this.startTime < 5) { this.countDown.color = Color.red; }
 			this.countDown.text = this.startTime.ToString ("F2");
 			this.startTime -= Time.deltaTime;
+			this.playerManagement.setScore (MAX_TIME-startTime);
 		} else if(this.startTime < 0) {
 			this.playerManagement.setState ("death");
 		}
@@ -211,10 +213,19 @@ public class HUDManagement : MonoBehaviour {
 	}
 
 	public void showGameOverHUD() {
-		if (this.gameOver.color.a < 1) {
-			Color tempGameOver = this.gameOver.color;
-			tempGameOver.a += 0.01f;
-			this.gameOver.color = tempGameOver;
+		if (this.endGame.color.a < 1) {
+			Color tempEndGame = this.endGame.color;
+			tempEndGame.a += 0.01f;
+			this.endGame.color = tempEndGame;
+		}
+	}
+
+	public void showWonHUD() {
+		this.endGame.text = "YOU WON";
+		if (this.endGame.color.a < 1) {
+			Color tempEndGame = this.endGame.color;
+			tempEndGame.a += 0.01f;
+			this.endGame.color = tempEndGame;
 		}
 	}
 }

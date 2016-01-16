@@ -8,7 +8,9 @@ public class GenerateAttributes : MonoBehaviour {
 	public GameObject flashlightPrefab;
 	public GameObject gunPrefab;
 	public GameObject keyPrefab;
+	public GameObject winningAttributePrefab;
 	private GameObject labyrinth;
+	private GameObject winningAttribute;
 	private int numberOfAttributes = 5;
 	private GameObject[] prefabs;
 	
@@ -70,6 +72,8 @@ public class GenerateAttributes : MonoBehaviour {
 				GameObject.Destroy (attribute);
 			}
 		}
+
+		this.createWinningAttribute ();
 	}
 	
 	// Update is called once per frame
@@ -78,5 +82,10 @@ public class GenerateAttributes : MonoBehaviour {
 		foreach(GameObject attribute in this.attributes) {
 			attribute.transform.Rotate(randomRotation);
 		}
+		this.winningAttribute.transform.Rotate (randomRotation);
+	}
+
+	private void createWinningAttribute() {
+		this.winningAttribute = (GameObject)Instantiate (this.winningAttributePrefab, new Vector3(172,-5,300), Quaternion.identity);
 	}
 }
