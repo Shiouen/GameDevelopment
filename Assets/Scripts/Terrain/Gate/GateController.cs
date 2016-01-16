@@ -32,29 +32,32 @@ public class GateController : MonoBehaviour {
 
         this.SetRotationHinge(this.FindHinge(this.smallGate, "right_gate", "outer_upper_hinge"), new Vector3(0.0f, -180.0f, 0.0f));
     }
-	
+
     public void Update() {
         if (Input.GetMouseButtonDown(0)) {
-            if (this.open) {
-                this.ToggleHinge(this.FindHinge(this.smallGate, "left_gate", "outer_upper_hinge"), true);
-                this.ToggleHinge(this.FindHinge(this.smallGate, "right_gate", "outer_upper_hinge"), false);
-                this.ToggleHinge(this.FindHinge(this.bigGate, "left_gate", "outer_upper_hinge"), true);
-                this.ToggleHinge(this.FindHinge(this.bigGate, "right_gate", "outer_upper_hinge"), false);
-            } else {
-                this.ToggleHinge(this.FindHinge(this.smallGate, "left_gate", "outer_upper_hinge"), false);
-                this.ToggleHinge(this.FindHinge(this.smallGate, "right_gate", "outer_upper_hinge"), true);
-                this.ToggleHinge(this.FindHinge(this.bigGate, "left_gate", "outer_upper_hinge"), false);
-                this.ToggleHinge(this.FindHinge(this.bigGate, "right_gate", "outer_upper_hinge"), true);
-            }
-            this.open = !this.open;
+            StartCoroutine(this.ToggleGates());
         }
     }
 
-	public void FixedUpdate() {
+    public IEnumerator ToggleGates() {
+        GameObject gateCamera = GameObject.FindGameObjectWithTag("GateCamera");
+        GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 
+        mainCamera.SetActive(false);
+        gateCamera.SetActive(true);
+
+        yield return new WaitForSeconds(3);
+
+        this.ToggleHinge(this.FindHinge(this.smallGate, "left_gate", "outer_upper_hinge"), this.open);
+        this.ToggleHinge(this.FindHinge(this.smallGate, "right_gate", "outer_upper_hinge"), !this.open);
+        this.ToggleHinge(this.FindHinge(this.bigGate, "left_gate", "outer_upper_hinge"), this.open);
+        this.ToggleHinge(this.FindHinge(this.bigGate, "right_gate", "outer_upper_hinge"), !this.open);
+        this.open = !this.open;
+
+        yield return new WaitForSeconds(3);
+
+        mainCamera.SetActive(true);
     }
-
-    public void ToggleGateHinges() { this.open = !this.open; }
 
     private GameObject CreateGate(string name, Vector3 position, Vector3 rotation, Vector3 scale) {
         GameObject gate = (GameObject) Instantiate(this.GatePrefab, Vector3.zero, Quaternion.identity);
@@ -73,15 +76,15 @@ public class GateController : MonoBehaviour {
         return gate.transform.FindChild(gatePart).FindChild(hinge).gameObject;
     }
 
-    private void ToggleHinge(GameObject hinge, bool clockwise) {
-        this.RotateHinge(hinge, new Vector3(0.0f, (clockwise) ? 90.0f : -90.0f, 0.0f));
-    }
-
     private void RotateHinge(GameObject hinge, Vector3 rotation) {
         hinge.transform.Rotate(rotation);
     }
 
     private void SetRotationHinge(GameObject hinge, Vector3 rotation) {
         hinge.transform.rotation = Quaternion.Euler(rotation);
+    }
+
+    private void ToggleHinge(GameObject hinge, bool clockwise) {
+        this.RotateHinge(hinge, new Vector3(0.0f, (clockwise) ? 90.0f : -90.0f, 0.0f));
     }
 }
