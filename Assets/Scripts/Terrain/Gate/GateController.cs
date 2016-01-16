@@ -7,11 +7,13 @@ public class GateController : MonoBehaviour {
     [SerializeField]
     private GameObject GatePrefab;
 
-
     private bool open;
     private GameObject smallGate;
     private GameObject bigGate;
     private GameObject labyrinth;
+
+    private GameObject mainCamera;
+    private GameObject gateCamera;
 
     private static readonly Vector3 smallGatePosition = new Vector3(208.56f, -4.92003f, 245.73f);
     private static readonly Vector3 smallGateRotation = new Vector3(0.0f, 0.0f, 0.0f);
@@ -26,6 +28,11 @@ public class GateController : MonoBehaviour {
         this.open = false;
 
         this.labyrinth = GameObject.FindGameObjectWithTag("Labyrinth");
+        this.mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        this.gateCamera = GameObject.FindGameObjectWithTag("GateCamera");
+
+        this.gateCamera.GetComponent<Camera>().enabled = false;
+        this.mainCamera.GetComponent<Camera>().enabled = true;
 
         this.smallGate = this.CreateGate("Small Gate", smallGatePosition, smallGateRotation, smallGateScale);
         this.bigGate = this.CreateGate("Big Gate", bigGatePosition, bigGateRotation, bigGateScale);
@@ -40,11 +47,8 @@ public class GateController : MonoBehaviour {
     }
 
     public IEnumerator ToggleGates() {
-        GameObject gateCamera = GameObject.FindGameObjectWithTag("GateCamera");
-        GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-
-        mainCamera.SetActive(false);
-        gateCamera.SetActive(true);
+        this.mainCamera.GetComponent<Camera>().enabled = false;
+        this.gateCamera.GetComponent<Camera>().enabled = true;
 
         yield return new WaitForSeconds(3);
 
@@ -56,7 +60,8 @@ public class GateController : MonoBehaviour {
 
         yield return new WaitForSeconds(3);
 
-        mainCamera.SetActive(true);
+        this.gateCamera.GetComponent<Camera>().enabled = false;
+        this.mainCamera.GetComponent<Camera>().enabled = true;
     }
 
     private GameObject CreateGate(string name, Vector3 position, Vector3 rotation, Vector3 scale) {

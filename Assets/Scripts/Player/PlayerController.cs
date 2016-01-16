@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour {
 	private CharacterController characterController;
 	private PlayerManagement playerManagement;
 
-	public Image minimapplayer; 
+	public Image minimapplayer;
+
+    private GameObject mainCamera;
 
 	// Use this for initialization
 	void Start () {
@@ -30,7 +32,10 @@ public class PlayerController : MonoBehaviour {
 		//Cursor.visible = false;
 
 		this.playerManagement = GetComponent<PlayerManagement> ();
-	}
+
+        this.mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+
+    }
 
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -43,8 +48,8 @@ public class PlayerController : MonoBehaviour {
 		// vertical view change - limited to the chosen view angle
 		this.verticalRotation -= Input.GetAxis("Mouse Y") * mouseSensitivity;
 		this.verticalRotation = Mathf.Clamp(this.verticalRotation, -(verticalViewAngle / 2.0f), (verticalViewAngle / 2.0f));
-		
-        GameObject.FindGameObjectWithTag("MainCamera").transform.localRotation = Quaternion.Euler(this.verticalRotation, 0.0f, 0.0f);
+
+        this.mainCamera.transform.localRotation = Quaternion.Euler(this.verticalRotation, 0.0f, 0.0f);
 
 		/* Movement */
 		
