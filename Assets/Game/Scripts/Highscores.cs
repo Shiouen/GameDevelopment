@@ -1,22 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Highscores : MonoBehaviour {
-	public Text hs1;
-	public Text hs2;
-	public Text hs3;
-	public Text hs4;
-	public Text hs5;
+	public Text score;
+	public InputField playerName;
 
 	// Use this for initialization
 	void Start () {
-		float highscore = PlayerPrefs.GetFloat ("Highscores");
-		hs1.text = "Melissa                      " + highscore.ToString();
+		this.score.text = "Score = "+PlayerPrefs.GetFloat ("CurrentScore").ToString();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void addScore() {
+		PlayerPrefs.SetFloat (this.playerName.text, PlayerPrefs.GetFloat ("CurrentScore"));
+		Application.LoadLevel ("Highscores");
 	}
 }

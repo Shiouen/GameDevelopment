@@ -3,7 +3,7 @@ using System.Collections;
 
 [RequireComponent (typeof(NavMeshAgent))]
 public class EnemyManagement : MonoBehaviour {
-	public static bool isActive = true;
+	public static bool isActive = false;
 	enum State { walking, running, attacking };
 
 	private State state;

@@ -20,6 +20,10 @@ public class HUDManagement : MonoBehaviour {
 	public Image Gun;
 	public Image FoundKey;
 	public Image Key;
+
+	public Image pergament;
+	public Text gameInfo;
+	public Button gotItButton;
 	private Color32 activeColor;
 
 	public Image bloodLevel1;
@@ -134,6 +138,10 @@ public class HUDManagement : MonoBehaviour {
 		this.isTimerActive = true;
 	}
 
+	public void stopTimer() {
+		this.isTimerActive = false;
+	}
+
 	public void disableHUD() {
 		this.minimap.enabled = false;
 		this.minimapplayer.enabled = false;
@@ -190,6 +198,12 @@ public class HUDManagement : MonoBehaviour {
 		// Enemy and player can resume their activities
 		EnemyManagement.isActive = true;
 		PlayerController.isActive = true;
+	}
+		
+	public void hideStartInfo() {
+		this.gotItButton.gameObject.SetActive (false);
+		this.pergament.enabled = false;
+		this.gameInfo.enabled = false;
 	}
 
 	public void setHealth(float health) {

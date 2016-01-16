@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
-	public static bool isActive = true;
+	public static bool isActive = false;
 
 	[SerializeField]
 	private float mouseSensitivity;

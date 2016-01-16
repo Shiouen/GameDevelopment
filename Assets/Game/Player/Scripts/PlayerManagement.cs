@@ -76,6 +76,7 @@ public class PlayerManagement : MonoBehaviour {
 			    break;
 			case State.won:
 				this.HUD.showWonHUD ();
+				this.HUD.stopTimer ();
 				this.gameManagement.setScore (this.score);
 				this.gameManagement.setState ("won");
 				break;

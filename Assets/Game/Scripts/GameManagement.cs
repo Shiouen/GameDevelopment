@@ -8,11 +8,16 @@ public class GameManagement : MonoBehaviour {
 	private State state;
 	private GameObject levelManagerObj;
 	private LevelManager levelManager;
+	private GameObject HUDObj;
+	private HUDManagement HUD;
 
 	// Use this for initialization
 	void Start () {
 		this.levelManagerObj = GameObject.Find("LevelManager");
 		this.levelManager = this.levelManagerObj.GetComponent<LevelManager>();
+		this.HUDObj = GameObject.Find("Player");
+		this.HUD = this.HUDObj.GetComponent<HUDManagement>();
+
 		this.state = State.Playing;
 		this.score = 0;
 	}
@@ -22,12 +27,12 @@ public class GameManagement : MonoBehaviour {
 		switch (this.state) {
 			case State.Playing:
 				break;
-		case State.GameOver:
-			Debug.Log ("update");
-				EnemyManagement.isActive = false;
-				PlayerController.isActive = false;
-				StartCoroutine(this.EndGameOver());
-				break;
+			case State.GameOver:
+				Debug.Log ("update");
+					EnemyManagement.isActive = false;
+					PlayerController.isActive = false;
+					StartCoroutine(this.EndGameOver());
+					break;
 			case State.Won:
 				EnemyManagement.isActive = false;
 				PlayerController.isActive = false;
@@ -40,34 +45,22 @@ public class GameManagement : MonoBehaviour {
 		yield return new WaitForSeconds(3);
 		this.levelManager.LoadScene ("EndGameOver");
 		// preparing for new game if the player wants to play again
-		this.initializeGame();
 	}
 
 	public IEnumerator Won() {
+		Debug.Log (this.score);
+		PlayerPrefs.SetFloat ("CurrentScore",this.score);
+		PlayerPrefs.Save ();
 		yield return new WaitForSeconds(3);
 		this.levelManager.LoadScene ("EndGameWon");
-		// preparing for new game if the player wants to play again
-		this.initializeGame();
-
-		PlayerPrefs.SetFloat ("Highscores",this.score);
-		PlayerPrefs.Save ();
 	}
-
-	private void initializeGame() {
-		this.state = State.Playing;
-		PlayerController.isActive = true;
-		EnemyManagement.isActive = true;
-		this.GetComponent<GateController>().IsOpen = false;
-	}
-
+		
 	public void setState(string state) {
 		switch (state) {
 		case "playing":
 			this.state = State.Playing;
 			break;
 		case "gameover":
-			Debug.Log ("setstate");
-
 			this.state = State.GameOver;
 			break;
 		case "won":
@@ -78,5 +71,11 @@ public class GameManagement : MonoBehaviour {
 
 	public void setScore(float score) {
 		this.score = score;
+	}
+
+	public void startGame() {
+		this.HUD.hideStartInfo();
+		PlayerController.isActive = true;
+		EnemyManagement.isActive = true;
 	}
 }
