@@ -5,7 +5,6 @@ using System.Collections;
 public class PlayerManagement : MonoBehaviour {
 	enum State { standing, walking, running, attacked, death };
 
-	public Text gameOver;
 	private bool flashlightFound;
 	private bool gunFound;
 	private bool keyFound;
@@ -15,8 +14,8 @@ public class PlayerManagement : MonoBehaviour {
 	private State state;
 	private Animator animator;
 	private HUDManagement HUD;
-	private GameObject levelManagerObj;
-	private LevelManager levelManager;
+	private GameObject gameManagementObj;
+	private GameManagement gameManagement;
 
 	private bool ItemsFound {
 		get {
@@ -27,9 +26,9 @@ public class PlayerManagement : MonoBehaviour {
 	// Use this for initialization
 	public void Start () {
 		this.HUD = GetComponent<HUDManagement> ();
+		this.gameManagementObj = GameObject.Find("GameController");
+		this.gameManagement = this.gameManagementObj.GetComponent<GameManagement>();
 		this.animator = GetComponent<Animator> ();
-		this.levelManagerObj = GameObject.Find("LevelManager");
-		this.levelManager = this.levelManagerObj.GetComponent<LevelManager>();
 
 		// Attributes initially not found
 		this.flashlightFound = false;
@@ -37,9 +36,6 @@ public class PlayerManagement : MonoBehaviour {
 		this.gunFound = false;
 		this.keyFound = false;
 		this.compassFound = false;
-		Color tempGameOver = this.gameOver.color;
-		tempGameOver.a = 0;
-		this.gameOver.color = tempGameOver;
 
 		// Initial health
 		this.health = 100;
@@ -71,21 +67,12 @@ public class PlayerManagement : MonoBehaviour {
 		    case State.attacked:
 			    this.animator.SetBool ("Attacked", true);
 			    break;
-		    case State.death:
-			    this.animator.SetBool ("Death", true);
-			    if (this.gameOver.color.a < 1) {
-				    Color tempGameOver = this.gameOver.color;
-				    tempGameOver.a += 0.01f;
-				    this.gameOver.color = tempGameOver;
-			    }
-			    StartCoroutine(EndGameOver());
+			case State.death:
+				this.animator.SetBool ("Death", true);
+				this.HUD.showGameOverHUD ();
+				this.gameManagement.setState ("gameover");
 			    break;
 		}
-	}
-
-	IEnumerator EndGameOver() {
-		yield return new WaitForSeconds(3);
-		this.levelManager.LoadScene ("EndGameOver");
 	}
 
 	// Registers when the player catches an attribute
@@ -117,7 +104,7 @@ public class PlayerManagement : MonoBehaviour {
 
 			// When all attributes are found, start HUD timer for next phase of the game
 			if (this.ItemsFound) {
-				this.HUD.startTimer();
+				StartCoroutine(this.HUD.startTimer());
 			}
 		}
 	}

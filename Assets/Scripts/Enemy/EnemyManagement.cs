@@ -3,6 +3,7 @@ using System.Collections;
 
 [RequireComponent (typeof(NavMeshAgent))]
 public class EnemyManagement : MonoBehaviour {
+	public static bool isActive = true;
 	enum State { walking, running, attacking };
 
 	private State state;
@@ -29,46 +30,50 @@ public class EnemyManagement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		this.animator.SetBool ("Walking", false);
-		this.animator.SetBool ("Running", false);
-		this.animator.SetBool ("Attacking", false);
+		if (EnemyManagement.isActive) {
+			this.animator.SetBool ("Walking", false);
+			this.animator.SetBool ("Running", false);
+			this.animator.SetBool ("Attacking", false);
 
-		// update location of the player, 'the target' for the zombie
-		this.zombie.SetDestination (this.player.transform.position);
+			// update location of the player, 'the target' for the zombie
+			this.zombie.SetDestination (this.player.transform.position);
 
-		switch (this.state) {
-		    case State.walking:
-			    this.animator.speed = 1.9f;
-			    this.animator.SetBool ("Walking", true);
-			    this.zombie.Resume ();
-			    this.zombie.speed = 3.0f;
+			switch (this.state) {
+			case State.walking:
+				this.animator.speed = 1.9f;
+				this.animator.SetBool ("Walking", true);
+				this.zombie.Resume ();
+				this.zombie.speed = 3.0f;
 
-			    // Let player know that he's not under attack if he was
-			    if (this.isAttacking) {
-				    this.isAttacking = false;
-				    this.playerController.setAttacked (false);
-			    }
-			    break;
-		    case State.running:
-			    this.animator.speed = 3.0f;
-			    this.animator.SetBool ("Running", true);
-			    this.zombie.Resume ();
-			    this.zombie.speed = 6.0f;
+					    // Let player know that he's not under attack if he was
+				if (this.isAttacking) {
+					this.isAttacking = false;
+					this.playerController.setAttacked (false);
+				}
+				break;
+			case State.running:
+				this.animator.speed = 3.0f;
+				this.animator.SetBool ("Running", true);
+				this.zombie.Resume ();
+				this.zombie.speed = 6.0f;
 
-			    // Let player know that he's not under attack if he was
-			    if (this.isAttacking) {
-				    this.isAttacking = false;
-				    this.playerController.setAttacked (false);
-			    }
-			    break;
-		    case State.attacking:
-			    this.animator.speed = 1.5f;
-			    this.animator.SetBool ("Attacking", true);
-			    this.zombie.Stop ();
+					    // Let player know that he's not under attack if he was
+				if (this.isAttacking) {
+					this.isAttacking = false;
+					this.playerController.setAttacked (false);
+				}
+				break;
+			case State.attacking:
+				this.animator.speed = 1.5f;
+				this.animator.SetBool ("Attacking", true);
+				this.zombie.Stop ();
 
-			    this.isAttacking = true;
-			    this.playerController.setAttacked (true);
-			    break;
+				this.isAttacking = true;
+				this.playerController.setAttacked (true);
+				break;
+			}
+		} else {
+			this.zombie.Stop ();
 		}
 	}
 

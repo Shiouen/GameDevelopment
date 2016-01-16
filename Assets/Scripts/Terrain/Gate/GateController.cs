@@ -4,6 +4,8 @@ using System.Collections;
 
 [RequireComponent(typeof(GameObject))]
 public class GateController : MonoBehaviour {
+	public static bool openFences = false;
+
     [SerializeField]
     private GameObject GatePrefab;
 
@@ -41,8 +43,9 @@ public class GateController : MonoBehaviour {
     }
 
     public void Update() {
-        if (Input.GetMouseButtonDown(0)) {
+		if(GateController.openFences) {
             StartCoroutine(this.ToggleGates());
+			GateController.openFences = false;
         }
     }
 
@@ -50,7 +53,7 @@ public class GateController : MonoBehaviour {
         this.mainCamera.GetComponent<Camera>().enabled = false;
         this.gateCamera.GetComponent<Camera>().enabled = true;
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
 
         this.ToggleHinge(this.FindHinge(this.smallGate, "left_gate", "outer_upper_hinge"), this.open);
         this.ToggleHinge(this.FindHinge(this.smallGate, "right_gate", "outer_upper_hinge"), !this.open);
@@ -58,7 +61,7 @@ public class GateController : MonoBehaviour {
         this.ToggleHinge(this.FindHinge(this.bigGate, "right_gate", "outer_upper_hinge"), !this.open);
         this.open = !this.open;
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
 
         this.gateCamera.GetComponent<Camera>().enabled = false;
         this.mainCamera.GetComponent<Camera>().enabled = true;

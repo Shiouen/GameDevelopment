@@ -4,14 +4,20 @@ using System.Collections;
 
 public class HUDManagement : MonoBehaviour {
 	public Text countDown;
+	public Text gameOver;
 	private float startTime;
 	private bool isTimerActive;
 
 	public Image FoundClock;
+	public Image Clock;
 	public Image FoundCompass;
+	public Image Compass;
 	public Image FoundFlashlight;
+	public Image Flashlight;
 	public Image FoundGun;
+	public Image Gun;
 	public Image FoundKey;
+	public Image Key;
 	private Color32 activeColor;
 
 	public Image bloodLevel1;
@@ -30,6 +36,7 @@ public class HUDManagement : MonoBehaviour {
 
 	private float health;
 	private float maxHealth;
+	private PlayerManagement playerManagement;
 
 	// Use this for initialization
 	void Start () {
@@ -39,6 +46,10 @@ public class HUDManagement : MonoBehaviour {
 		this.countDown.text = "";
 		this.activeColor = new Color32(22,255,123,255);
 
+		Color tempGameOver = this.gameOver.color;
+		tempGameOver.a = 0;
+		this.gameOver.color = tempGameOver;
+
 		float x = Screen.width-(this.minimap.rectTransform.sizeDelta.x/2);
 		float y = this.minimap.rectTransform.sizeDelta.y/2;
 		this.minimap.transform.position = new Vector3(x,y,0);
@@ -46,14 +57,19 @@ public class HUDManagement : MonoBehaviour {
 
 		this.health = 100;
 		this.maxHealth = 100;
+
+		this.playerManagement = GetComponent<PlayerManagement> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (this.isTimerActive && this.startTime >= 0) {
-			if(this.startTime < 5) this.countDown.color = Color.red;
-			this.countDown.text = this.startTime.ToString("F2");
+			if (this.startTime < 5)
+				this.countDown.color = Color.red;
+			this.countDown.text = this.startTime.ToString ("F2");
 			this.startTime -= Time.deltaTime;
+		} else if(this.startTime < 0) {
+			this.playerManagement.setState ("death");
 		}
 
 		Color tempLevel1 = bloodLevel1.color;
@@ -108,8 +124,70 @@ public class HUDManagement : MonoBehaviour {
 		}
 	}
 
-	public void startTimer() {
+	public IEnumerator startTimer() {
+		GateController.openFences = true;
+		this.disableHUD ();
+		yield return new WaitForSeconds(4);
+		this.enableHUD ();
 		this.isTimerActive = true;
+	}
+
+	public void disableHUD() {
+		this.minimap.enabled = false;
+		this.minimapplayer.enabled = false;
+		this.FoundClock.enabled = false;
+		this.Clock.enabled = false;
+		this.FoundGun.enabled = false;
+		this.Gun.enabled = false;
+		this.FoundKey.enabled = false;
+		this.Key.enabled = false;
+		this.FoundCompass.enabled = false;
+		this.Compass.enabled = false;
+		this.FoundFlashlight.enabled = false;
+		this.Flashlight.enabled = false;
+		this.bloodLevel1.enabled = false;
+		this.bloodLevel2.enabled = false;
+		this.bloodLevel3.enabled = false;
+		this.bloodLevel4.enabled = false;
+		this.bloodLevel5.enabled = false;
+		this.bloodLevel6.enabled = false;
+		this.bloodLevel7.enabled = false;
+		this.bloodLevel8.enabled = false;
+		this.bloodLevel9.enabled = false;
+		this.bloodLevel10.enabled = false;
+
+		// Enemy and player aren't active for a time
+		EnemyManagement.isActive = false;
+		PlayerController.isActive = false;
+	}
+
+	public void enableHUD() {
+		this.minimap.enabled = true;
+		this.minimapplayer.enabled = true;
+		this.FoundClock.enabled = true;
+		this.Clock.enabled = true;
+		this.FoundGun.enabled = true;
+		this.Gun.enabled = true;
+		this.FoundKey.enabled = true;
+		this.Key.enabled = true;
+		this.FoundCompass.enabled = true;
+		this.Compass.enabled = true;
+		this.FoundFlashlight.enabled = true;
+		this.Flashlight.enabled = true;
+		this.bloodLevel1.enabled = true;
+		this.bloodLevel2.enabled = true;
+		this.bloodLevel3.enabled = true;
+		this.bloodLevel4.enabled = true;
+		this.bloodLevel5.enabled = true;
+		this.bloodLevel6.enabled = true;
+		this.bloodLevel7.enabled = true;
+		this.bloodLevel8.enabled = true;
+		this.bloodLevel9.enabled = true;
+		this.bloodLevel10.enabled = true;
+
+		// Enemy and player can resume their activities
+		EnemyManagement.isActive = true;
+		PlayerController.isActive = true;
 	}
 
 	public void setHealth(float health) {
@@ -129,6 +207,14 @@ public class HUDManagement : MonoBehaviour {
 			// calculation for minimap
 			speed.y = speed.z;
 			this.minimapplayer.transform.position = this.minimapplayer.transform.position + speed / 88;
+		}
+	}
+
+	public void showGameOverHUD() {
+		if (this.gameOver.color.a < 1) {
+			Color tempGameOver = this.gameOver.color;
+			tempGameOver.a += 0.01f;
+			this.gameOver.color = tempGameOver;
 		}
 	}
 }
