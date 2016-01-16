@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour {
 		this.verticalRotation -= Input.GetAxis("Mouse Y") * mouseSensitivity;
 		this.verticalRotation = Mathf.Clamp(this.verticalRotation, -(verticalViewAngle / 2.0f), (verticalViewAngle / 2.0f));
 		
-		Camera.main.transform.localRotation = Quaternion.Euler(this.verticalRotation, 0.0f, 0.0f);
+        GameObject.FindGameObjectWithTag("MainCamera").transform.localRotation = Quaternion.Euler(this.verticalRotation, 0.0f, 0.0f);
 
 		/* Movement */
 		
