@@ -15,8 +15,6 @@ public class PlayerController : MonoBehaviour {
 	private CharacterController characterController;
 	private PlayerManagement playerManagement;
 
-	public Image minimapplayer;
-
     private GameObject mainCamera;
 
 	// Use this for initialization
@@ -32,13 +30,12 @@ public class PlayerController : MonoBehaviour {
 		//Cursor.visible = false;
 
 		this.playerManagement = GetComponent<PlayerManagement> ();
-
         this.mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-
-    }
+	}
 
 	// Update is called once per frame
 	void FixedUpdate () {
+		Vector3 previousPosition = this.transform.localPosition;
 		/* Rotation */
 		
 		// horizontal view change
@@ -70,10 +67,7 @@ public class PlayerController : MonoBehaviour {
 			z = z * 2.0f;
 			Vector3 speed = this.transform.rotation * new Vector3 (x, 0.0f, z);
 			this.characterController.SimpleMove (speed);
-
-			// calculation for minimap
-			speed.y = speed.z;
-			this.minimapplayer.transform.position = this.minimapplayer.transform.position + speed/115;
+			this.playerManagement.moveMinimapPlayer (speed, previousPosition);
 		} else if (Input.GetAxis ("Vertical") != 0) {
 			this.playerManagement.setState ("walking");
 
@@ -81,10 +75,7 @@ public class PlayerController : MonoBehaviour {
 			z = z * 0.3f;
 			Vector3 speed = this.transform.rotation * new Vector3 (x, 0.0f, z);
 			this.characterController.SimpleMove (speed);
-
-			// calculation for minimap
-			speed.y = speed.z;
-			this.minimapplayer.transform.position = this.minimapplayer.transform.position + speed/115;
+			this.playerManagement.moveMinimapPlayer (speed, previousPosition);
 		} else if (this.isAttacked) {
 			this.playerManagement.setState ("attacked");
 		} else {

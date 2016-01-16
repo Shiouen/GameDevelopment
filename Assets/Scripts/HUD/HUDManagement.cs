@@ -25,6 +25,9 @@ public class HUDManagement : MonoBehaviour {
 	public Image bloodLevel9;
 	public Image bloodLevel10;
 
+	public Image minimap;
+	public Image minimapplayer; 
+
 	private float health;
 	private float maxHealth;
 
@@ -36,10 +39,11 @@ public class HUDManagement : MonoBehaviour {
 		this.countDown.text = "";
 		this.activeColor = new Color32(22,255,123,255);
 
-		/*Rect screen = new Rect (-Screen.width/2, -Screen.height/2, Screen.width, Screen.height);
-		bloodLevel1. = screen;
-		bloodLevel2.pixelsPerUnit = screen;
-		bloodLevel3.pixelsPerUnit = screen;*/
+		float x = Screen.width-(this.minimap.rectTransform.sizeDelta.x/2);
+		float y = this.minimap.rectTransform.sizeDelta.y/2;
+		this.minimap.transform.position = new Vector3(x,y,0);
+		this.minimapplayer.transform.position = new Vector3 (Screen.width-33,353,0);
+
 		this.health = 100;
 		this.maxHealth = 100;
 	}
@@ -116,8 +120,15 @@ public class HUDManagement : MonoBehaviour {
 		if (this.health < start) {
 			return 1;
 		}
-		//float alpha = 1 - (100 * this.health) / (start * this.maxHealth);
-		//Debug.Log (alpha);
 		return 0;
+	}
+
+	public void moveMinimapPlayer(Vector3 speed, Vector3 previousPosition) {
+		if (previousPosition.x - transform.localPosition.x > 0.01 || transform.localPosition.x - previousPosition.x > 0.01
+			|| previousPosition.z - transform.localPosition.z > 0.01 || transform.localPosition.z - previousPosition.z > 0.01) {
+			// calculation for minimap
+			speed.y = speed.z;
+			this.minimapplayer.transform.position = this.minimapplayer.transform.position + speed / 88;
+		}
 	}
 }

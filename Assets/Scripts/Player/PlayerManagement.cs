@@ -165,5 +165,9 @@ public class PlayerManagement : MonoBehaviour {
 			break;
 		}
 	}
+
+	public void moveMinimapPlayer(Vector3 speed, Vector3 previousPosition) {
+		this.HUD.moveMinimapPlayer (speed, previousPosition);
+	}
 }
 
