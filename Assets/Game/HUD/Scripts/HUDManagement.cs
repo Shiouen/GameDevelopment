@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class HUDManagement : MonoBehaviour {
-	private float MAX_TIME = 100.0f;
+	private float MAX_TIME = 120.0f;
 
 	public Text countDown;
 	public Text endGame;

@@ -21,7 +21,7 @@ public class PlayerManagement : MonoBehaviour {
 
 	private bool ItemsFound {
 		get {
-			return this.flashlightFound || this.clockFound || this.gunFound || this.keyFound || this.compassFound;
+			return this.flashlightFound && this.clockFound && this.gunFound && this.keyFound && this.compassFound;
 		}
 	}
 	
