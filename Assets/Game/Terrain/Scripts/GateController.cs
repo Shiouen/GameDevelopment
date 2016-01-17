@@ -4,6 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(GameObject))]
 public class GateController : MonoBehaviour {
 	public bool IsOpen = false;
+	public AudioSource gateSound;
 
     [SerializeField]
     private GameObject GatePrefab;
@@ -42,6 +43,8 @@ public class GateController : MonoBehaviour {
 
     public void Update() {
 		if (this.IsOpen) {
+			Debug.Log ("open");
+			this.gateSound.Play ();
             StartCoroutine(this.ToggleGates());
             this.IsOpen = !this.IsOpen;
         }

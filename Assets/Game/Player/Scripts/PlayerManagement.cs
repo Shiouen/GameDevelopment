@@ -118,6 +118,7 @@ public class PlayerManagement : MonoBehaviour {
 				StartCoroutine(this.HUD.startTimer());
 			}
 		} else if(other.tag.Equals("WinningAttribute")) {
+			Debug.Log ("won");
 			this.itemSounds.PlayWinningSound ();
 			other.gameObject.SetActive(false);
 			this.setState("won");

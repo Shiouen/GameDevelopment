@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameManagement : MonoBehaviour {
 	enum State { Playing, GameOver, Won };
+	public AudioSource backgroundSound;
+	public AudioSource gameOverSound;
 
 	private float score;
 	private State state;
@@ -27,11 +29,10 @@ public class GameManagement : MonoBehaviour {
 			case State.Playing:
 				break;
 			case State.GameOver:
-				Debug.Log ("update");
-					EnemyManagement.isActive = false;
-					PlayerController.isActive = false;
-					StartCoroutine(this.EndGameOver());
-					break;
+				EnemyManagement.isActive = false;
+				PlayerController.isActive = false;
+				StartCoroutine(this.EndGameOver());
+				break;
 			case State.Won:
 				EnemyManagement.isActive = false;
 				PlayerController.isActive = false;
@@ -41,13 +42,16 @@ public class GameManagement : MonoBehaviour {
 	}
 
 	public IEnumerator EndGameOver() {
-        this.GetComponents<AudioSource>()[ 1 ].Play();
-        yield return new WaitForSeconds(3);
+		this.backgroundSound.Stop ();
+		if(!this.gameOverSound.isPlaying) {
+			this.gameOverSound.Play();
+		}
+        yield return new WaitForSeconds(2);
 		this.levelManager.LoadScene ("EndGameOver");
-		// preparing for new game if the player wants to play again
 	}
 
 	public IEnumerator Won() {
+		this.backgroundSound.Stop ();
 		PlayerPrefs.SetFloat ("CurrentScore",this.score);
 		PlayerPrefs.Save ();
 		yield return new WaitForSeconds(3);
