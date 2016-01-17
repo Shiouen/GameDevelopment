@@ -41,7 +41,8 @@ public class GameManagement : MonoBehaviour {
 	}
 
 	public IEnumerator EndGameOver() {
-		yield return new WaitForSeconds(3);
+        this.GetComponents<AudioSource>()[ 1 ].Play();
+        yield return new WaitForSeconds(3);
 		this.levelManager.LoadScene ("EndGameOver");
 		// preparing for new game if the player wants to play again
 	}
