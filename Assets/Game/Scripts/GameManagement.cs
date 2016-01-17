@@ -13,8 +13,7 @@ public class GameManagement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.levelManagerObj = GameObject.Find("LevelManager");
-		this.levelManager = this.levelManagerObj.GetComponent<LevelManager>();
+		this.levelManager = this.GetComponent<LevelManager>();
 		this.HUDObj = GameObject.Find("Player");
 		this.HUD = this.HUDObj.GetComponent<HUDManagement>();
 

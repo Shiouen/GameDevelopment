@@ -85,29 +85,29 @@ public class PlayerManagement : MonoBehaviour {
 
 	// Registers when the player catches an attribute
 	public void OnTriggerEnter(Collider other) {
-		if (other.tag.Equals("Attribute")) {
+        if (other.tag.Equals("Attribute")) {
 			other.gameObject.SetActive(false);
 			switch(other.gameObject.name) {
-			case "Clock(Clone)":
-				this.clockFound = true;
-				this.HUD.makeActive ("clock");
-				break;
-			case "Compass(Clone)":
-				this.compassFound = true;
-				this.HUD.makeActive ("compass");
-				break;
-			case "Flashlight(Clone)":
-				this.flashlightFound = true;
-				this.HUD.makeActive ("flashlight");
-				break;
-			case "Gun(Clone)":
-				this.gunFound = true;
-				this.HUD.makeActive ("gun");
-				break;
-			case "Key(Clone)":
-				this.keyFound = true;
-				this.HUD.makeActive ("key");
-				break;
+		        case "Clock(Clone)":
+			        this.clockFound = true;
+			        this.HUD.makeActive ("clock");
+                    break;
+		        case "Compass(Clone)":
+			        this.compassFound = true;
+			        this.HUD.makeActive ("compass");
+			        break;
+		        case "Flashlight(Clone)":
+			        this.flashlightFound = true;
+			        this.HUD.makeActive ("flashlight");
+			        break;
+		        case "Gun(Clone)":
+			        this.gunFound = true;
+			        this.HUD.makeActive ("gun");
+			        break;
+		        case "Key(Clone)":
+			        this.keyFound = true;
+			        this.HUD.makeActive ("key");
+			        break;
 			}
 
 			// When all attributes are found, start HUD timer for next phase of the game
