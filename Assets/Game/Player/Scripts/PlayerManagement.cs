@@ -17,6 +17,7 @@ public class PlayerManagement : MonoBehaviour {
 	private HUDManagement HUD;
 	private GameObject gameManagementObj;
 	private GameManagement gameManagement;
+	private ItemSounds itemSounds;
 
 	private bool ItemsFound {
 		get {
@@ -27,6 +28,7 @@ public class PlayerManagement : MonoBehaviour {
 	// Use this for initialization
 	public void Start () {
 		this.HUD = GetComponent<HUDManagement> ();
+		this.itemSounds = GetComponent<ItemSounds> ();
 		this.gameManagementObj = GameObject.Find("GameController");
 		this.gameManagement = this.gameManagementObj.GetComponent<GameManagement>();
 		this.animator = GetComponent<Animator> ();
@@ -87,6 +89,7 @@ public class PlayerManagement : MonoBehaviour {
 	public void OnTriggerEnter(Collider other) {
         if (other.tag.Equals("Attribute")) {
 			other.gameObject.SetActive(false);
+			this.itemSounds.PlayPickupSound ();
 			switch(other.gameObject.name) {
 		        case "Clock(Clone)":
 			        this.clockFound = true;
@@ -115,6 +118,7 @@ public class PlayerManagement : MonoBehaviour {
 				StartCoroutine(this.HUD.startTimer());
 			}
 		} else if(other.tag.Equals("WinningAttribute")) {
+			this.itemSounds.PlayWinningSound ();
 			other.gameObject.SetActive(false);
 			this.setState("won");
 		}

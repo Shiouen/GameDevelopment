@@ -1,23 +1,20 @@
 ﻿using UnityEngine;
 
 public class ItemSounds : MonoBehaviour {
-    private AudioSource pickupSound;
+	public AudioSource pickupSound;
+	public AudioSource winningSound;
 
     public void Start() {
-        this.pickupSound = this.GetComponent<AudioSource>();
     }
 
     public void Update() {
-        if (Input.GetMouseButtonDown(0)) {
-            this.Play();
-        }
     }
 
-    public void OnTriggerEnter(Collider other) {
-        this.Play();
-    }
-
-    public void Play() {
+    public void PlayPickupSound() {
         this.pickupSound.Play();
     }
+
+	public void PlayWinningSound() {
+		this.winningSound.Play();
+	}
 }
