@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class HUDManagement : MonoBehaviour {
-	private float MAX_TIME = 1000.0f;
+	private float MAX_TIME = 10.0f;
 
 	public Text countDown;
 	public Text endGame;
@@ -75,6 +75,8 @@ public class HUDManagement : MonoBehaviour {
 			this.startTime -= Time.deltaTime;
 			this.playerManagement.setScore (startTime);
 		} else if(this.startTime < 0) {
+			this.startTime = 0;
+			this.countDown.text = this.startTime.ToString ("F2");
 			this.playerManagement.setState ("death");
 		}
 

@@ -3,7 +3,7 @@ using System.Collections;
 
 [RequireComponent(typeof(GameObject))]
 public class GateController : MonoBehaviour {
-    public bool IsOpen = false;
+	public bool IsOpen = false;
 
     [SerializeField]
     private GameObject GatePrefab;

@@ -46,6 +46,8 @@ public class GenerateAttributes : MonoBehaviour {
 			randomZ = Random.Range (minZ, maxZ);
 			y = -4;
 
+			// may not generated in the room with the treasure
+			if (randomX > 170 && randomZ > 240) { continue; }
 			Vector3 attributePos = new Vector3 (randomX, y, randomZ);
 
 			this.prefabs[index].transform.position = new Vector3 (randomX, y, randomZ);
@@ -86,6 +88,6 @@ public class GenerateAttributes : MonoBehaviour {
 	}
 
 	private void createWinningAttribute() {
-		this.winningAttribute = (GameObject)Instantiate (this.winningAttributePrefab, new Vector3(172,-5,300), Quaternion.identity);
+		this.winningAttribute = (GameObject)Instantiate (this.winningAttributePrefab, new Vector3(210,-5,290), Quaternion.identity);
 	}
 }
