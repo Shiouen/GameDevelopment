@@ -5,7 +5,7 @@ public class GenerateEnemies : MonoBehaviour {
 	public GameObject enemyPrefab;
 	private GameObject[] enemies;
 	private GameObject labyrinth;
-	private int numberOfEnemies = 0;
+	private int numberOfEnemies = 100;
 
 	// Use this for initialization
 	void Start () {

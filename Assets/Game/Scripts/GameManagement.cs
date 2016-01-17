@@ -48,7 +48,6 @@ public class GameManagement : MonoBehaviour {
 	}
 
 	public IEnumerator Won() {
-		Debug.Log (this.score);
 		PlayerPrefs.SetFloat ("CurrentScore",this.score);
 		PlayerPrefs.Save ();
 		yield return new WaitForSeconds(3);

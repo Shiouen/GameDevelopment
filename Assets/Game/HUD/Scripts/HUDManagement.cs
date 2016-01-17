@@ -73,7 +73,7 @@ public class HUDManagement : MonoBehaviour {
 			if (this.startTime < 5) { this.countDown.color = Color.red; }
 			this.countDown.text = this.startTime.ToString ("F2");
 			this.startTime -= Time.deltaTime;
-			this.playerManagement.setScore (MAX_TIME-startTime);
+			this.playerManagement.setScore (startTime);
 		} else if(this.startTime < 0) {
 			this.playerManagement.setState ("death");
 		}
